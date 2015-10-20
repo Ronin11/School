@@ -1,0 +1,24 @@
+Y:\tmp\SensorSimulator\DummyServer\obj\Debug\DummyServer.csprojResolveAssemblyReference.cache
+Y:\tmp\SensorSimulator\DummyServer\bin\Debug\DummyServer.exe.config
+Y:\tmp\SensorSimulator\DummyServer\bin\Debug\DummyServer.exe
+Y:\tmp\SensorSimulator\DummyServer\bin\Debug\DummyServer.pdb
+Y:\tmp\SensorSimulator\DummyServer\bin\Debug\Messages.dll
+Y:\tmp\SensorSimulator\DummyServer\bin\Debug\Messages.pdb
+Y:\tmp\SensorSimulator\DummyServer\obj\Debug\DummyServer.exe
+Y:\tmp\SensorSimulator\DummyServer\obj\Debug\DummyServer.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\bin\Debug\DummyServer.exe.config
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\bin\Debug\DummyServer.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\bin\Debug\DummyServer.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\bin\Debug\Messages.dll
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\bin\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\obj\Debug\DummyServer.csprojResolveAssemblyReference.cache
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\obj\Debug\DummyServer.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\DummyServer\obj\Debug\DummyServer.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\bin\Debug\DummyServer.exe.config
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\bin\Debug\DummyServer.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\bin\Debug\DummyServer.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\bin\Debug\Messages.dll
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\bin\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\obj\Debug\DummyServer.csprojResolveAssemblyReference.cache
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\obj\Debug\DummyServer.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\DummyServer\obj\Debug\DummyServer.pdb

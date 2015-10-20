@@ -1,0 +1,13 @@
+Y:\tmp\SensorSimulator\Messages\bin\Debug\Messages.dll
+Y:\tmp\SensorSimulator\Messages\bin\Debug\Messages.pdb
+Y:\tmp\SensorSimulator\Messages\obj\Debug\Messages.dll
+Y:\tmp\SensorSimulator\Messages\obj\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\Messages\bin\Debug\Messages.dll
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\Messages\bin\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\Messages\obj\Debug\Messages.dll
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\Messages\obj\Debug\Messages.pdb
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\Messages\bin\Debug\Messages.dll
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\Messages\bin\Debug\Messages.pdb
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\Messages\obj\Debug\Messages.csprojResolveAssemblyReference.cache
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\Messages\obj\Debug\Messages.dll
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\Messages\obj\Debug\Messages.pdb

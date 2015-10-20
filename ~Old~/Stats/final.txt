@@ -1,0 +1,34 @@
+1.
+	a. y = mx + b
+	b. 36130
+	c. 196
+	d. It adjust due to st dev
+	e. Very useful
+	f. very significant
+
+2.
+#Require packages
+require(mosaic)
+require(MASS)
+require(openintro)
+
+#Read in the Gradrate data set
+GradRate11<-read.csv("http://www.math.usu.edu/cfairbourn/Stat2300/RStudioFiles/data/GradRate11.csv")
+
+#Force results NOT to report in scientific notation
+options(scipen = 8)
+
+#Create the model with all 10 independent variables.
+res = lm(GradRate ~ Women + Age + FullFaculty + Ratio +
+         MinGradRate + Pell + Minority + MedianSAT +
+         TotalPrice + Size, data = GradRate11)
+
+#Look at the results
+summary(res)
+
+#Remove variables from the model until all variables are significant (p-value<.05)
+#and you have the largest Adjusted R-squared, the smallest Residual standard error, 
+#and the largest F-statistic. (You may have to settle for the best 2 out of 3.)
+
+#Plot the residuals vs. fitted values
+plot(res$residuals,res$fitted, main="Residuals vs. Fitted Values")

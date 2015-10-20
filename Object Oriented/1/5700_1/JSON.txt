@@ -1,0 +1,9 @@
+{"Radius":4,"Name":"Circle"}
+{"Radius":6,"OtherRadius":10,"Name":"Ellipse"}
+{"Radius":0,"OtherRadius":0,"Name":"Ellipse"}
+{"Width":13,"Name":"Square"}
+{"Height":14,"Width":5,"Name":"Rectangle"}
+{"Height":10,"Width":16,"Name":"Rectangle"}
+{"Height":14,"Width":15,"Name":"Rectangle"}
+{"Height":1,"Width":13,"Name":"Triangle"}
+{"Length":7,"Height":6,"Width":3,"Name":"ScaleneTriangle"}

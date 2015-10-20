@@ -1,0 +1,17 @@
+4. A matched pair is used to determine the difference between an event's outcome
+5. I think this workshop was very effective because the p-value is .9944
+
+
+RCODE:
+
+#require the necessary packages
+require(MASS)
+require(mosaic)
+require(openintro)
+
+#read in the data
+Perform<-read.csv("http://www.math.usu.edu/cfairbourn/Stat2300/RStudioFiles/data/Perform.csv")
+
+diff<-Perform$Before-Perform$After
+
+t.test(diff, mu=0, alternative="greater")

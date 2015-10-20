@@ -1,0 +1,50 @@
+Y:\tmp\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.exe.config
+Y:\tmp\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.exe
+Y:\tmp\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.pdb
+Y:\tmp\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.Properties.Resources.resources
+Y:\tmp\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.SimulationForm.resources
+Y:\tmp\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.csproj.GenerateResource.Cache
+Y:\tmp\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.exe
+Y:\tmp\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.pdb
+Y:\tmp\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.csprojResolveAssemblyReference.cache
+Y:\tmp\SensorSimulator\SensorSimulator\bin\Debug\Messages.dll
+Y:\tmp\SensorSimulator\SensorSimulator\bin\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.exe.config
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.pdb
+\\Mac\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.exe.config
+\\Mac\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.exe
+\\Mac\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.pdb
+\\psf\Home\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.exe.config
+\\psf\Home\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.exe
+\\psf\Home\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\SensorSimulator.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\Messages.dll
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\bin\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.csprojResolveAssemblyReference.cache
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.Properties.Resources.resources
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.SimulationForm.resources
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator\SensorSimulator\obj\Debug\SensorSimulator.csproj.GenerateResource.Cache
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.csprojResolveAssemblyReference.cache
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.Properties.Resources.resources
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.SimulationForm.resources
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.csproj.GenerateResource.Cache
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\bin\Debug\SensorSimulator.exe.config
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\bin\Debug\SensorSimulator.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\bin\Debug\SensorSimulator.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\bin\Debug\Messages.dll
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\bin\Debug\Messages.pdb
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.exe
+Y:\Box Sync\Classes\cs5700 2015 Fall\Homework\HW2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.pdb
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\bin\Debug\SensorSimulator.exe.config
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.exe
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.pdb
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\bin\Debug\SensorSimulator.exe
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\bin\Debug\SensorSimulator.pdb
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\bin\Debug\Messages.dll
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\bin\Debug\Messages.pdb
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.csprojResolveAssemblyReference.cache
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.Properties.Resources.resources
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.SimulationForm.resources
+C:\Users\Ronin\Desktop\School\Object Oriented\2\SensorSimulator-Version2\SensorSimulator\obj\Debug\SensorSimulator.csproj.GenerateResource.Cache

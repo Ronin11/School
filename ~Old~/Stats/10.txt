@@ -1,0 +1,14 @@
+1.	a. As GPA goes up, SAT scores go up
+	b. Explanetory: GPA Response: SAT
+	c. To see if GPA impacts SAT scores
+
+2.	a. 0.31
+	b. This means as GPA goes up, SAT scores go up
+	c. 1770
+	d. Hes about average.
+	e. No, because there is a lot less data for that GPA
+
+3. 	a. x= -2588.2 - 6.323(x)
+	b. Yes
+	c. 409.3
+	d. Yeah kinda 

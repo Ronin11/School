@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorSimulator", "SensorSimulator\SensorSimulator.csproj", "{B69B4BFE-115C-4AA9-8504-795FEE5F051C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyServer", "DummyServer\DummyServer.csproj", "{A987672B-E6F9-4A67-AFB9-1FB95B058FDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{88244493-19F3-4FC8-B859-39742A4291FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B69B4BFE-115C-4AA9-8504-795FEE5F051C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B69B4BFE-115C-4AA9-8504-795FEE5F051C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B69B4BFE-115C-4AA9-8504-795FEE5F051C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B69B4BFE-115C-4AA9-8504-795FEE5F051C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A987672B-E6F9-4A67-AFB9-1FB95B058FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A987672B-E6F9-4A67-AFB9-1FB95B058FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A987672B-E6F9-4A67-AFB9-1FB95B058FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A987672B-E6F9-4A67-AFB9-1FB95B058FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88244493-19F3-4FC8-B859-39742A4291FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88244493-19F3-4FC8-B859-39742A4291FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88244493-19F3-4FC8-B859-39742A4291FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88244493-19F3-4FC8-B859-39742A4291FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
