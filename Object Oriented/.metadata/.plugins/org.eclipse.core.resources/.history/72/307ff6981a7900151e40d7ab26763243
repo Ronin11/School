@@ -1,0 +1,14 @@
+package command;
+
+import javax.swing.KeyStroke;
+
+import object.guiObject;
+
+public abstract class Command {
+	guiObject obj;
+	public abstract void doCommand();
+	public abstract void undoCommand();
+	
+	
+
+}

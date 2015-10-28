@@ -1,0 +1,22 @@
+package command;
+
+import object.Shape;
+
+public class MoveCommand extends Command{
+
+	public MoveCommand(Shape shape) {
+		super(shape);
+	}
+
+	@Override
+	public void doCommand() {
+		
+	}
+
+	@Override
+	public void undoCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

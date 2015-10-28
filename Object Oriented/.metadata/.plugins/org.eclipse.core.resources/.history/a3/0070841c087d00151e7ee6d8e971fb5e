@@ -1,0 +1,24 @@
+package command;
+
+import object.Shape;
+
+public class ResizeCommand extends Command{
+
+	public ResizeCommand(Shape shape) {
+		super(shape);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void doCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void undoCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

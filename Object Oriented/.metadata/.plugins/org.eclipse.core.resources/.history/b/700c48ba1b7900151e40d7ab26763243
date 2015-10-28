@@ -1,0 +1,6 @@
+package object;
+
+public interface Shape {
+	public void draw();
+
+}

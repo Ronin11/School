@@ -1,0 +1,25 @@
+package object;
+
+import java.awt.Color;
+
+public class Circle extends Shape {
+	   
+	   public Circle(int x, int y, Color color){
+		   this.x = x;
+		   this.y = y;
+		   this.color = color;
+	   }
+
+	   public Circle(Color color){
+	      this.color = color;		
+	   }
+
+	   public void setRadius(int radius) {
+	      this.radius = radius;
+	   }
+
+	   @Override
+	   public void draw() {
+	      System.out.println("Circle: Draw() [Color : " + color + ", x : " + x + ", y :" + y + ", radius :" + radius);
+	   }
+	}

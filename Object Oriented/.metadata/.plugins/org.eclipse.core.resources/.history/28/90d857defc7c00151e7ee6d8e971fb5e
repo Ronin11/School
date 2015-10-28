@@ -1,0 +1,37 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Heart extends Shape {
+	   
+	   public Heart(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Heart";
+	   }
+	   public Heart(){
+		   name = "Heart";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+		   g.setColor(color);
+		   int constant = (int)Math.round(baseSize*scale*.6);
+		   g.fillOval(x, y-constant, constant, constant);
+		   g.fillOval(x-constant, y-constant, constant, constant);
+		   int sides = 4;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   xPoints[0] = x;
+		   yPoints[0] = y-constant/2;
+		   xPoints[1] = x-constant*9/10;
+		   yPoints[1] = y-constant/5;
+		   xPoints[2] = x;
+		   yPoints[2] = y+constant;
+		   xPoints[3] = x+constant*9/10;
+		   yPoints[3] = yPoints[1];
+		   g.fillPolygon(xPoints, yPoints, sides);
+	   }
+	}
+
+

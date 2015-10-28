@@ -1,0 +1,14 @@
+package object;
+
+public class Heart extends Shape {
+	   
+	   public Heart(int x, int y, Color color){
+		   super(x,y,color);
+	   }
+
+
+	   @Override
+	   public void draw() {
+	      System.out.println("Circle: Draw() [Color : " + color + ", x : " + x + ", y :" + y + ", radius :" + scale);
+	   }
+	}

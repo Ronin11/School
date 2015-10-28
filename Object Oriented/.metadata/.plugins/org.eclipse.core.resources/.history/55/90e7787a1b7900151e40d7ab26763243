@@ -1,0 +1,10 @@
+package object;
+
+public abstract class guiObject {
+	int posX, posY;
+	
+	guiObject(){
+		
+	}
+
+}

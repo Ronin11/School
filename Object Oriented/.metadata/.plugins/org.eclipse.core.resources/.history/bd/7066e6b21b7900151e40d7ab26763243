@@ -1,0 +1,12 @@
+package command;
+
+import object.guiObject;
+
+public abstract class Command {
+	guiObject obj;
+	public abstract void doCommand();
+	public abstract void undoCommand();
+	
+	
+
+}

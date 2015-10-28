@@ -1,0 +1,21 @@
+package command;
+
+import java.util.ArrayList;
+
+public class Invoker {
+	private ArrayList<Command> done = new ArrayList<Command>();
+	private ArrayList<Command> toDo = new ArrayList<Command>();
+	private Thread thread;
+	private boolean run = true;
+	
+	public void start(){
+		
+	}
+	
+	private void process(){
+		while(run){
+			
+		}
+	}
+
+}

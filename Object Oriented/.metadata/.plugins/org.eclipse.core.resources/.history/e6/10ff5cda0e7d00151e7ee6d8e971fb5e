@@ -1,0 +1,50 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Polygon;
+
+public class Pentagon extends ObjectShape {
+	   
+	   public Pentagon(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Pentagon";
+	   }
+	   public Pentagon(){
+		   name = "Pentagon";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+		   g.setColor(color);
+		   int sides = 5;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   double theta = 2 * Math.PI / sides;
+		   for (int i = 0; i < sides; ++i) {
+			   double offset = Math.PI / sides;
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize)+y;
+		       xPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize)+x;
+		       // etc...
+		   }
+		   g.fillPolygon(xPoints, yPoints, sides);
+	   }
+	   
+	   public void select(Graphics g){
+		   if(color != Color.black)
+			   g.setColor(Color.black);
+		   else
+			   g.setColor(Color.red);
+		   int sides = 5;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   double theta = 2 * Math.PI / sides;
+		   for (int i = 0; i < sides; ++i) {
+			   double offset = Math.PI / sides;
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize)+y;
+		       xPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize)+x;
+		       // etc...
+		   }
+		   g.drawPolygon(xPoints, yPoints, sides);
+	   }
+	}

@@ -1,0 +1,12 @@
+package command;
+
+import object.Shape;
+
+public abstract class Command {
+	protected Shape shape;
+	public Command(Shape shape){
+		this.shape = shape;
+	}
+	public abstract void doCommand();
+	public abstract void undoCommand();
+}

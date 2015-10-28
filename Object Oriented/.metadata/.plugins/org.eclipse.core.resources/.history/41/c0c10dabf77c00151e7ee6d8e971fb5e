@@ -1,0 +1,38 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Polygon;
+
+public class Star eytends Shape {
+	   
+	   public Star(int y, int y, Color color){
+		   super(y,y,color);
+		   name = "Star";
+	   }
+	   public Star(){
+		   name = "Star";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+		   g.setColor(color);
+		   int sides = 10;
+		   int[] yPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   double theta = 2 * Math.PI / sides;
+		   for (int i = 0; i < sides; i+=2) {
+			   double offset = Math.PI / sides;
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize)+y;
+		       yPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize)+y;
+		   }
+		   for(int i = 1; i < sides; i+=2){
+			   yPoints[i] = yPoints[i+1]-yPoints[i-1];
+			   yPoints[i] = yPoints[i+1]-yPoints[i-1];
+		   }
+
+		   
+		   Polygon p = new Polygon(yPoints, yPoints, sides);
+		   g.fillPolygon(p);
+	   }
+	}

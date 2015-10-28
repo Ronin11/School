@@ -1,0 +1,58 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Polygon;
+
+public class Star extends Shape {
+	   
+	   public Star(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Star";
+	   }
+	   public Star(){
+		   name = "Star";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+		   g.setColor(color);
+		   int sides = 10;
+		   final double difference = .4;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   double theta = 2 * Math.PI / sides;
+		   for (int i = 0; i < sides; i+=2) {
+			   double offset = Math.PI / (sides/2);
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize)+y;
+		       xPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize)+x;
+		   }
+		   for (int i = 1; i < sides; i+=2) {
+			   double offset = Math.PI / (sides/2);
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize*difference)+y;
+		       xPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize*difference)+x;
+		   }
+		   
+		   Polygon p = new Polygon(xPoints, yPoints, sides);
+		   g.fillPolygon(p);
+	   }
+	   
+	   public void select(Graphics g){
+		   int sides = 10;
+		   final double difference = .4;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   double theta = 2 * Math.PI / sides;
+		   for (int i = 0; i < sides; i+=2) {
+			   double offset = Math.PI / (sides/2);
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize)+y;
+		       xPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize)+x;
+		   }
+		   for (int i = 1; i < sides; i+=2) {
+			   double offset = Math.PI / (sides/2);
+		       yPoints[i] = (int) Math.round(Math.cos(theta * i + offset)*scale*baseSize*difference)+y;
+		       xPoints[i] = (int) Math.round(Math.sin(theta * i + offset)*scale*baseSize*difference)+x;
+		   }
+		   g.drawPolygon(xPoints, yPoints, sides);
+	   }
+	}

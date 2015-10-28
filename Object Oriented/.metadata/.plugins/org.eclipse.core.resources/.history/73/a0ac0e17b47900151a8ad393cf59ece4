@@ -1,0 +1,17 @@
+package command;
+
+public class CreateCommand extends Command{
+
+	@Override
+	public void doCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void undoCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

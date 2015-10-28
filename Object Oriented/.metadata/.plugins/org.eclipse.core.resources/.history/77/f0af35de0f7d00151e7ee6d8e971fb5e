@@ -1,0 +1,40 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.geom.Ellipse2D;
+
+public class Circle extends ObjectShape {
+	   
+	   public Circle(int x, int y, Color color){
+		   super(x,y,color);
+		   this.name = "Circle";
+	   }
+	   public Circle(){
+		   this.name = "Circle";
+	   }
+	   
+	   protected void buildShape(){
+		   shape = new Ellipse2D.Float(x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+		    		  Math.round(baseSize*scale), Math.round(baseSize*scale));
+		   Polygon p = shape;
+	   }
+
+
+	   @Override
+	   public void draw(Graphics g) {
+		  g.setColor(color);
+	      g.fillOval(shape);
+	      g.fi
+	   }
+	   
+	   public boolean select(Graphics g, int eX, int eY){
+		   if(color != Color.black)
+			   g.setColor(Color.black);
+		   else
+			   g.setColor(Color.red);
+		   g.drawOval(x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+				   Math.round(baseSize*scale), Math.round(baseSize*scale));
+		   return true;
+	   }
+	}

@@ -1,0 +1,32 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Circle extends Shape {
+	   
+	   public Circle(int x, int y, Color color){
+		   super(x,y,color);
+		   this.name = "Circle";
+	   }
+	   public Circle(){
+		   this.name = "Circle";
+	   }
+
+
+	   @Override
+	   public void draw(Graphics g) {
+		  g.setColor(color);
+	      g.fillOval(x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+	    		  Math.round(baseSize*scale), Math.round(baseSize*scale));
+	   }
+	   
+	   public boolean select(Graphics g, int x, int y){
+		   if(color != Color.black)
+			   g.setColor(Color.black);
+		   else
+			   g.setColor(Color.red);
+		   g.drawOval(x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+				   Math.round(baseSize*scale), Math.round(baseSize*scale));
+	   }
+	}

@@ -1,0 +1,20 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Star extends Shape {
+	   
+	   public Star(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Star";
+	   }
+	   public Star(){
+		   name = "Star";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+		   g.drawString(name, x, y);
+	   }
+	}

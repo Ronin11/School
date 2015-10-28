@@ -1,0 +1,21 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Circle extends Shape {
+	   
+	   public Circle(int x, int y, Color color){
+		   super(x,y,color);
+		   this.name = "Circle";
+	   }
+	   public Circle(){
+		   this.name = "Circle";
+	   }
+
+
+	   @Override
+	   public void draw(Graphics g) {
+	      g.fillOval(x, y, Math.round(baseSize*scale), (int)baseSize*scale);
+	   }
+	}

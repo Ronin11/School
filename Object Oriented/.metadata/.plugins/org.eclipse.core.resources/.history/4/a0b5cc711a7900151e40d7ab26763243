@@ -1,0 +1,7 @@
+package command;
+
+public class Command {
+	guiObject obj;
+	
+
+}

@@ -1,0 +1,19 @@
+package object;
+
+import java.awt.Color;
+
+public class Triangle extends Shape {
+	   
+	   public Triangle(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Triangle";
+	   }
+	   public Triangle(){
+		   name = "Triangle";
+	   }
+	   
+	   @Override
+	   public void draw() {
+		   
+	   }
+	}

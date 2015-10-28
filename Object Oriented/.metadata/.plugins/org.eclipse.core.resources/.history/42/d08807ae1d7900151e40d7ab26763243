@@ -1,0 +1,17 @@
+package object;
+
+import java.awt.Color;
+
+public class Triangle extends Shape {
+	   
+	   public Triangle(int x, int y, Color color, int length){
+		   this.x = x;
+		   this.y = y;
+		   this.color = color;
+	   }
+
+	   @Override
+	   public void draw() {
+	      System.out.println("Circle: Draw() [Color : " + color + ", x : " + x + ", y :" + y + ", radius :" + radius);
+	   }
+	}

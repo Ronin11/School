@@ -1,0 +1,77 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
+
+public class Heart extends ObjectShape {
+	   
+	   public Heart(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Heart";
+	   }
+	   public Heart(){
+		   name = "Heart";
+	   }
+	   
+	   protected void buildShape(){
+		   int points = 60;
+		   int[] xPoints = new int[points];
+		   int[] yPoints = new int[points];
+		   for (int t = 0; t <= points; t++) {
+			   double r = .3 * (-t*t +40*t + 1200.0);
+		       double theta = t * Math.PI / 180;
+		       xPoints[t] = (int) ((int) r * Math.sin(theta)); 
+		       yPoints[t] = - r * Math.cos(theta);
+		       pointsR.add(new Point2D.Double(x, y));
+		    }
+	   }
+/*
+	   @Override
+	   public void buildShape() {
+		   g.setColor(color);
+		   int constant = (int)Math.round(baseSize*scale*.8);
+		   g.fillOval(x, y-constant, constant, constant);
+		   g.fillOval(x-constant, y-constant, constant, constant);
+		   int sides = 4;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   xPoints[0] = x;
+		   yPoints[0] = y-constant/2;
+		   xPoints[1] = x-constant*9/10;
+		   yPoints[1] = y-constant/5;
+		   xPoints[2] = x;
+		   yPoints[2] = y+constant;
+		   xPoints[3] = x+constant*9/10;
+		   yPoints[3] = yPoints[1];
+		   g.fillPolygon(xPoints, yPoints, sides);
+		   shape = new Ellipse2D.Float(x, y-constant, constant, constant);
+	   }
+	  
+	   public void select(Graphics g){
+		   if(color != Color.black)
+			   g.setColor(Color.black);
+		   else
+			   g.setColor(Color.red);
+		   
+		   int constant = (int)Math.round(baseSize*scale*.8);
+		   g.drawOval(x, y-constant, constant, constant);
+		   g.drawOval(x-constant, y-constant, constant, constant);
+		   int sides = 4;
+		   int[] xPoints = new int[sides];
+		   int[] yPoints = new int[sides];
+		   xPoints[0] = x;
+		   yPoints[0] = y-constant/2;
+		   xPoints[1] = x-constant*9/10;
+		   yPoints[1] = y-constant/5;
+		   xPoints[2] = x;
+		   yPoints[2] = y+constant;
+		   xPoints[3] = x+constant*9/10;
+		   yPoints[3] = yPoints[1];
+		   g.drawPolygon(xPoints, yPoints, sides);
+	   }
+	   */
+	}
+
+

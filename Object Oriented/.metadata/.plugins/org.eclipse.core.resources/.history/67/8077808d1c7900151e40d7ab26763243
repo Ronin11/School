@@ -1,0 +1,11 @@
+package object;
+
+import java.awt.Color;
+
+public abstract class Shape {
+	   protected Color color;
+	   protected int x;
+	   protected int y;
+	   
+	   public abstract void draw();
+}

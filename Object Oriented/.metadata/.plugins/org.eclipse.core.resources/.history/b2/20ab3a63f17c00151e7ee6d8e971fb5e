@@ -1,0 +1,24 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Triangle extends Shape {
+	   
+	   public Triangle(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Triangle";
+	   }
+	   public Triangle(){
+		   name = "Triangle";
+	   }
+	   
+	   @Override
+	   public void draw(Graphics g) {
+		   g.setColor(color);
+		   int[] xPoints = {x-(Math.round(baseSize*scale)/2), x, x+(Math.round(baseSize*scale)/2)};
+		   g.fillPolygon(xPoints, yPoints, 3);
+		   (x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+				   Math.round(baseSize*scale), Math.round(baseSize*scale));
+	   }
+	}

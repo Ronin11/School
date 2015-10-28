@@ -1,0 +1,16 @@
+package command;
+
+import object.Shape;
+import gui.DrawingCanvas;
+
+public abstract class Command {
+	protected Shape shape;
+	protected DrawingCanvas canvas;
+	public Command(Shape shape, DrawingCanvas canvas){
+		this.shape = shape;
+		this.canvas = canvas;
+	}
+	public abstract void doCommand();
+	public abstract void undoCommand();
+	public Shape getShape(){return shape;}
+}

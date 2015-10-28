@@ -1,0 +1,31 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Square extends Shape {
+	   
+	   public Square(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Square";
+	   }
+	   public Square(){
+		   name = "Square";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+		   g.setColor(color);
+		   g.fillRect(x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+		    		  Math.round(baseSize*scale), Math.round(baseSize*scale));
+	   }
+	   
+	   public void select(Graphics g){
+		   if(color != Color.black)
+			   g.setColor(Color.black);
+		   else
+			   g.setColor(Color.red);
+		   g.drawRect(x-(Math.round(baseSize*scale)/2), y-(Math.round(baseSize*scale)/2),
+		    		  Math.round(baseSize*scale), Math.round(baseSize*scale));
+	   }
+	}

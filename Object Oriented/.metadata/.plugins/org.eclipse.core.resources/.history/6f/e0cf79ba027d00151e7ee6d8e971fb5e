@@ -1,0 +1,28 @@
+package object;
+
+import java.awt.Color;
+import java.util.HashMap;
+
+public class ShapeFactory {
+	//Not currently the flyweight pattern
+   private static final HashMap<String, Shape> circleMap = new HashMap();
+
+   public static Shape makeCircle(int x, int y, Color color) {
+      return new Circle(x,y,color);
+   }
+   public static Shape makeTriangle(int x, int y, Color color) {
+	      return new Triangle(x,y,color);
+   }
+   public static Shape makeSquare(int x, int y, Color color) {
+	      return new Square(x,y,color);
+   }
+   public static Shape makePentagon(int x, int y, Color color) {
+	      return new Pentagon(x,y,color);
+   }
+   public static Shape makeStar(int x, int y, Color color) {
+	      return new Star(x,y,color);
+   }
+   public static Shape makeHeart(int x, int y, Color color) {
+	      return new Heart(x,y,color);
+   }
+}

@@ -1,0 +1,20 @@
+package object;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Pentagon extends Shape {
+	   
+	   public Pentagon(int x, int y, Color color){
+		   super(x,y,color);
+		   name = "Pentagon";
+	   }
+	   public Pentagon(){
+		   name = "Pentagon";
+	   }
+
+	   @Override
+	   public void draw(Graphics g) {
+	      System.out.println("Circle: Draw() [Color : " + color + ", x : " + x + ", y :" + y + ", radius :" + scale);
+	   }
+	}

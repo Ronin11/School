@@ -1,0 +1,164 @@
+package gui;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+import object.*;
+
+public class GUI {
+	private JPanel panel;
+	private DrawingCanvas canvas;
+	private Shape currentShape;
+	
+	private class DrawingCanvas extends Canvas{
+		Graphics2D g2;
+		ArrayList<Shape> shapes = new ArrayList<Shape>();
+		final static int canvasSize = 300;
+		public DrawingCanvas(){
+			setBackground(Color.white);
+			setSize(canvasSize,canvasSize);
+			//shapes.add(new Circle(100,100,Color.red));
+			//shapes.add(new Circle(0,0,Color.black));
+			this.addMouseListener(new MouseAdapter(){
+				@Override
+				public void mousePressed(MouseEvent e){
+					if(shapes.size() > 0)
+						shapes.remove(0);
+					shapes.add(ShapeFactory.getStar(e.getX(), e.getY(), Color.black));
+					repaint();	
+				}
+			});
+		}
+		public void paint (Graphics g){
+			g2 = (Graphics2D) g;
+			requestFocus();
+		}
+		public void update(Graphics g){
+			g2 = (Graphics2D) g;
+			g.setColor(getBackground());
+			g.clearRect(0, 0, canvasSize, canvasSize);
+			for(Shape shape : shapes)
+				shape.draw(g);
+			requestFocus();
+		}
+	}
+	
+	private JMenuBar buildMenuBar(JFrame frame){
+		JMenuBar menuBar = new JMenuBar();
+		
+		JMenu file = new JMenu("File");
+		menuBar.add(file);
+		
+		JMenuItem createCanvas = new JMenuItem("Create New Canvas");
+		file.add(createCanvas);
+		createCanvas.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//createCanvas();
+			}
+		});
+		
+		JMenuItem saveAs = new JMenuItem("Save as...");
+		file.add(saveAs);
+		saveAs.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//saveAs();
+			}
+		});
+		
+		JMenuItem importFile = new JMenuItem("Import");
+		file.add(importFile);
+		importFile.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//export();
+			}
+		});
+		
+		return menuBar;
+	}
+	
+	private JButton makeButton(Shape shape){
+		JButton temp = new JButton(shape.getName());
+		temp.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		return temp;
+	}
+	
+	private void setup(){
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.insets = new Insets(10,10,10,10);
+		canvas = new DrawingCanvas();
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		panel.add(makeButton(new Circle()), c);
+		
+		
+		c.gridy = 1;
+		panel.add(makeButton(new Triangle()), c);
+		
+		c.gridy = 2;
+		panel.add(makeButton(new Square()), c);
+		
+		c.gridy = 3;
+		panel.add(makeButton(new Pentagon()), c);
+		
+		c.gridy = 4;
+		panel.add(makeButton(new Star()), c);
+		
+		c.gridy = 5;
+		panel.add(makeButton(new Heart()), c);
+		
+		c.gridx = 1;
+		c.gridy = 0;
+		c.gridheight = 7;
+		panel.add(canvas, c);
+		
+	}
+	
+	
+	
+    public void createAndShowGUI(){
+        //Create and set up the window.
+        JFrame frame = new JFrame("Best Drawing Program Ever");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(400,200));
+        
+        frame.setJMenuBar(buildMenuBar(frame));
+ 
+
+		panel = new JPanel();
+		setup();
+        frame.getContentPane().add(panel);
+ 
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
