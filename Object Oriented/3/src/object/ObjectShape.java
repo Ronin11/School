@@ -1,12 +1,13 @@
 package object;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 
-public abstract class ObjectShape {
+public abstract class ObjectShape implements Cloneable{
 	   protected Color color = Color.BLACK;
 	   protected Shape shape;
 	   protected int x = 0;
@@ -14,6 +15,15 @@ public abstract class ObjectShape {
 	   protected float scale = 1;
 	   final protected int baseSize = 25;
 	   protected String name;
+	   
+	   public ObjectShape createCopy(){
+		   try {
+			return (ObjectShape) this.clone();
+		   } catch (CloneNotSupportedException e) {
+			   e.printStackTrace();
+			   return null;
+		   }
+	   }
 	   
 	   public void draw(Graphics g){
 		   if(shape == null)
@@ -28,6 +38,7 @@ public abstract class ObjectShape {
 			   g2.setColor(Color.black);
 		   else
 			   g2.setColor(Color.red);
+		   g2.setStroke(new BasicStroke(3));
 		   g2.draw(shape);
 	   };
 	   protected abstract void buildShape();
@@ -45,6 +56,11 @@ public abstract class ObjectShape {
 		   this.x = x;
 		   this.y = y;
 		   this.color = color;
+	   }
+	   
+	   public void addDuplicateOffset(){
+		   this.x += 10;
+		   this.y += 10;
 	   }
 	   
 	   public void setX(int x) {this.x = x;}
@@ -65,7 +81,7 @@ public abstract class ObjectShape {
 	   
 	   public void select(Graphics g){
 		   this.drawEdge(g);
-	   };
+	   }
 	   
 	   public void toXML(){
 		   

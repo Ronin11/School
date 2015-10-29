@@ -19,7 +19,20 @@ public class Invoker implements Runnable{
 		thread.start();
 	}
 	public void undo(){
-		
+		try{
+			mutex.acquire();
+			try{
+				if(done.size() > 0)
+				{
+					done.get(done.size()-1).undoCommand();
+					done.remove(done.size()-1);
+				}
+			} finally {
+				mutex.release();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}	
 	}
 	
 	public void addCommand(Command cmd){

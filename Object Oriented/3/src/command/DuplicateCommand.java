@@ -11,14 +11,14 @@ public class DuplicateCommand extends Command{
 
 	@Override
 	public void doCommand() {
-		// TODO Auto-generated method stub
-		
+		shape = shape.createCopy();
+		shape.addDuplicateOffset();
+		canvas.addShape(shape);
 	}
 
 	@Override
 	public void undoCommand() {
-		// TODO Auto-generated method stub
-		
+		canvas.removeShape(shape);
 	}
 
 }

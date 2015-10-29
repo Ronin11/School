@@ -1,18 +1,24 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+
+import command.DeleteCommand;
 
 import object.*;
 
@@ -25,7 +31,11 @@ public class GUI {
 		JMenuBar menuBar = new JMenuBar();
 		
 		JMenu file = new JMenu("File");
+		JMenu edit = new JMenu("Edit");
+		JMenu help = new JMenu("Help");
 		menuBar.add(file);
+		menuBar.add(edit);
+		menuBar.add(help);
 		
 		JMenuItem createCanvas = new JMenuItem("Create New Canvas");
 		file.add(createCanvas);
@@ -54,6 +64,45 @@ public class GUI {
 			}
 		});
 		
+		
+		JMenuItem undo = new JMenuItem("Undo - Ctrl+Z");
+		edit.add(undo);
+		undo.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				canvas.getInvoker().undo();
+			}
+		});
+		
+		JMenuItem duplicate = new JMenuItem("Duplicate - Ctrl + D");
+		edit.add(duplicate);
+		duplicate.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//createCanvas();
+			}
+		});
+		
+		JMenuItem delete = new JMenuItem("Delete - delete");
+		edit.add(delete);
+		delete.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ObjectShape shape = canvas.getCurrentShape();
+				if(shape != null)
+					canvas.getInvoker().addCommand(new DeleteCommand(shape, canvas));
+			}
+		});
+		
+		JMenuItem changeColor = new JMenuItem("Change Color - Ctrl+R");
+		edit.add(changeColor);
+		changeColor.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//createCanvas();
+			}
+		});
+		
 		return menuBar;
 	}
 	
@@ -62,7 +111,7 @@ public class GUI {
 		temp.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				canvas.setCurrentShape(shape);
+				canvas.setCurrentShape(shape.createCopy());
 				canvas.setCreate(true);
 			}
 		});
@@ -83,6 +132,7 @@ public class GUI {
 		c.gridy = 0;
 		JButton colorButton = new JButton();
 		colorButton.setBackground(canvas.getCurrentColor());
+		colorButton.setPreferredSize(new Dimension(40,25));
 		panel.add(colorButton, c);
 		
 		c.gridx = 0;
@@ -114,12 +164,28 @@ public class GUI {
 		c.gridheight = 7;
 		c.gridwidth = 4;
 		panel.add(canvas, c);
+		
+		colorButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			     Color color = JColorChooser.showDialog(null, "Choose desired color", null);
+			     if(color != null){
+			    	 colorButton.setBackground(color);
+			     	canvas.setCurrentColor(color);
+			     }
+			}
+		});
 	}
 	
 	
 	
     public void createAndShowGUI(){
         //Create and set up the window.
+		try {
+		    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+		 } catch (Exception e) {
+		            e.printStackTrace();
+		 }
         JFrame frame = new JFrame("Best Drawing Program Ever");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(400,200));

@@ -4,8 +4,7 @@ import java.awt.Color;
 import java.util.HashMap;
 
 public class ShapeFactory {
-	//Not currently the flyweight pattern
-   private static final HashMap<String, ObjectShape> circleMap = new HashMap();
+	//Not currently the flyweight pattern, but doesnt really add to anything
 
    public static ObjectShape makeCircle(int x, int y, Color color) {
       return new Circle(x,y,color);
@@ -42,10 +41,10 @@ public class ShapeFactory {
 	      return new Star();
    }
    
-   public static ObjectShape makeHeart(int x, int y, Color color) {
+   public static ObjectShape makeOctogon(int x, int y, Color color) {
 	      return new Octogon(x,y,color);
    }
-   public static ObjectShape makeHeart() {
+   public static ObjectShape makeOctogon() {
 	      return new Octogon();
    }
 }

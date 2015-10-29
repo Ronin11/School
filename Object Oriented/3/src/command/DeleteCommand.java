@@ -11,14 +11,13 @@ public class DeleteCommand extends Command{
 
 	@Override
 	public void doCommand() {
-		// TODO Auto-generated method stub
-		
+		if(!canvas.removeShape(shape))
+			System.out.println("Shape not found.");
 	}
 
 	@Override
 	public void undoCommand() {
-		// TODO Auto-generated method stub
-		
+		canvas.addShape(shape);
 	}
 
 }
