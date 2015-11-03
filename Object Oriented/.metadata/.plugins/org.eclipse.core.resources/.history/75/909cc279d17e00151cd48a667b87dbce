@@ -1,0 +1,60 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+
+import org.junit.Test;
+
+import gui.DrawingCanvas;
+import object.*;
+import command.*;
+
+public class Tests {
+
+	@Test
+	public void testCommands(){
+		try {
+			DrawingCanvas canvas = new DrawingCanvas(Color.white);
+			ObjectShape circle = ShapeFactory.makeCircle();
+			canvas.getInvoker().addCommand(new CreateCommand(circle, canvas);
+			Thread.sleep(100);
+			assertTrue(canvas.getShapes().contains(circle));
+			
+			MoveCommand move = new MoveCommand(circle, canvas);
+			move.setPosition(0, 0, 100, 100);
+			canvas.getInvoker().addCommand(move);
+			Thread.sleep(100);
+			assertTrue(canvas.getShapes().get(0).getX() == 100);
+			assertTrue(canvas.getShapes().get(0).getY() == 100);
+			
+			canvas.getInvoker().addCommand(new SelectCommand(circle, canvas));
+			Thread.sleep(100);
+			
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testShapes(){
+		assertNotNull(ShapeFactory.makeCircle());
+		assertNotNull(ShapeFactory.makeTriangle());
+		assertNotNull(ShapeFactory.makeSquare());
+		assertNotNull(ShapeFactory.makePentagon());
+		assertNotNull(ShapeFactory.makeOctogon());
+		assertNotNull(ShapeFactory.makeStar());
+		assertNotNull(ShapeFactory.makeCircle(0,0,Color.black));
+		assertNotNull(ShapeFactory.makeTriangle(0,0,Color.black));
+		assertNotNull(ShapeFactory.makeSquare(0,0,Color.black));
+		assertNotNull(ShapeFactory.makePentagon(0,0,Color.black));
+		assertNotNull(ShapeFactory.makeOctogon(0,0,Color.black));
+		assertNotNull(ShapeFactory.makeStar(0,0,Color.black));
+	}
+	
+	@Test
+	public void testIO(){
+		
+	}
+}

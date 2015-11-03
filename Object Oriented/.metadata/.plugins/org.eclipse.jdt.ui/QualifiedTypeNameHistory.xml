@@ -20,13 +20,10 @@
 <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
 <fullyQualifiedTypeName name="java.awt.Graphics"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="gui.GUI.Mode"/>
 <fullyQualifiedTypeName name="command.Invoker"/>
 <fullyQualifiedTypeName name="command.CreateCommand"/>
 <fullyQualifiedTypeName name="object.ShapeFactory"/>
-<fullyQualifiedTypeName name="object.Circle"/>
-<fullyQualifiedTypeName name="gui.DrawingCanvas"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
 <fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
@@ -39,4 +36,11 @@
 <fullyQualifiedTypeName name="java.awt.geom.Ellipse2D"/>
 <fullyQualifiedTypeName name="java.awt.geom.Point2D"/>
 <fullyQualifiedTypeName name="java.awt.Polygon"/>
+<fullyQualifiedTypeName name="gui.DrawingCanvas"/>
+<fullyQualifiedTypeName name="object.Circle"/>
+<fullyQualifiedTypeName name="object.ObjectShape"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="io.XML"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

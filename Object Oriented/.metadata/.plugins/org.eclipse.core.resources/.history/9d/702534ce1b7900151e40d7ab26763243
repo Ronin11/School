@@ -1,8 +1,0 @@
-package object;
-
-public class ObjectFactory {
-	public ObjectFactory()
-	{
-		
-	}
-}

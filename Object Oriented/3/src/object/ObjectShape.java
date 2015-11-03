@@ -7,6 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 public abstract class ObjectShape implements Cloneable{
 	   protected Color color = Color.BLACK;
 	   protected Shape shape;
@@ -14,6 +17,7 @@ public abstract class ObjectShape implements Cloneable{
 	   protected int y = 0;
 	   protected float scale = 1;
 	   final protected int baseSize = 25;
+	   final protected int duplicateOffset = 10;
 	   protected String name;
 	   
 	   public ObjectShape createCopy(){
@@ -24,6 +28,7 @@ public abstract class ObjectShape implements Cloneable{
 			   return null;
 		   }
 	   }
+	   public boolean isInit(){return (shape != null);}
 	   
 	   public void draw(Graphics g){
 		   if(shape == null)
@@ -59,18 +64,26 @@ public abstract class ObjectShape implements Cloneable{
 	   }
 	   
 	   public void addDuplicateOffset(){
-		   this.x += 10;
-		   this.y += 10;
+		   this.x += duplicateOffset;
+		   this.y += duplicateOffset;
+		   this.buildShape();
 	   }
 	   
-	   public void setX(int x) {this.x = x;}
-	   //public int getX(){return x;}
+	   public int getDuplicateOffset(){
+		   return duplicateOffset;
+	   }
+	   
+	   public void updatePos(int x, int y){
+		   this.x = x;
+		   this.y = y;
+		   this.buildShape();
+	   }
+	   public int getX(){return x;}
 
-	   public void setY(int y) {this.y = y;}
-	   //public int getY(){return y;}
+	   public int getY(){return y;}
 	   
 	   public void setColor(Color color){this.color = color;}
-	   //public Color getColor(){return color;}
+	   public Color getColor(){return color;}
 	   
 	   public void setScale(float scale){this.scale = scale;}
 	   //public int getScale(){return scale;}
@@ -83,7 +96,32 @@ public abstract class ObjectShape implements Cloneable{
 		   this.drawEdge(g);
 	   }
 	   
-	   public void toXML(){
-		   
+	   
+	   public Element toXML(Document doc){
+			Element shape = doc.createElement("Shape");
+			
+			shape.setAttribute("Name", name);
+
+			Element red = doc.createElement("R");
+			red.appendChild(doc.createTextNode(String.valueOf(this.color.getRed())));
+			shape.appendChild(red);
+			
+			Element green = doc.createElement("G");
+			green.appendChild(doc.createTextNode(String.valueOf(this.color.getGreen())));
+			shape.appendChild(green);
+			
+			Element blue = doc.createElement("B");
+			blue.appendChild(doc.createTextNode(String.valueOf(this.color.getBlue())));
+			shape.appendChild(blue);
+
+			Element xPos = doc.createElement("X");
+			xPos.appendChild(doc.createTextNode(String.valueOf(x)));
+			shape.appendChild(xPos);
+			
+			Element yPos = doc.createElement("Y");
+			yPos.appendChild(doc.createTextNode(String.valueOf(y)));
+			shape.appendChild(yPos);
+			
+			return shape;
 	   }
 }

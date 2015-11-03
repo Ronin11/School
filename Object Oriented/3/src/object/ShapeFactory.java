@@ -47,4 +47,24 @@ public class ShapeFactory {
    public static ObjectShape makeOctogon() {
 	      return new Octogon();
    }
+   
+   public static ObjectShape makeShape(String name, int x, int y, Color color){
+	   switch(name){
+	   		case "Circle":
+	   			return new Circle(x,y,color);
+	   		case "Square":
+	   			return new Square(x,y,color);
+	   		case "Triangle":
+	   			return new Triangle(x,y,color);
+	   		case "Pentagon":
+	   			return new Pentagon(x,y,color);
+	   		case "Octogon":
+	   			return new Octogon(x,y,color);
+	   		case "Star":
+	   			return new Star(x,y,color);
+	   		default:
+	   			System.out.println("Somthing Bad!");
+	   			return null;
+	   }
+   }
 }

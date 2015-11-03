@@ -1,0 +1,28 @@
+package command;
+
+import gui.DrawingCanvas;
+import object.ObjectShape;
+
+public class ChangeColorCommand extends Command{
+	ObjectShape prevState;
+	public ChangeColorCommand(ObjectShape shape, DrawingCanvas canvas) {
+		super(shape, canvas);
+	}
+
+	@Override
+	public void doCommand() {
+		prevState = canvas.updateShape(shape);
+		if(prevState == null){
+			System.out.println("Shape not found.");
+		}
+	}
+
+	@Override
+	public void undoCommand() {
+		prevState = canvas.updateShape(prevState);
+		if(prevState == null){
+			System.out.println("Shape not found.");
+		}
+	}
+
+}

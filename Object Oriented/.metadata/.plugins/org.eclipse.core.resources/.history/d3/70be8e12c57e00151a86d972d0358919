@@ -1,0 +1,24 @@
+package test;
+
+import org.junit.Test;
+
+import object.ShapeFactory;
+
+public class Tests {
+
+	@Test
+	public void testCommands(){
+		
+	}
+	
+	@Test
+	public void testShapes(){
+		assertEquals();
+		ShapeFactory.makeCircle();
+	}
+	
+	@Test
+	public void testIO(){
+		
+	}
+}

@@ -16,8 +16,7 @@ public class SelectCommand extends Command{
 
 	@Override
 	public void undoCommand() {
-		// TODO Auto-generated method stub
-		
+		canvas.selectShape(null);
 	}
 
 }

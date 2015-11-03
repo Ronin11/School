@@ -1,0 +1,21 @@
+package test;
+
+import org.junit.Test;
+
+public class Tests {
+
+	@Test
+	public void testCommands(){
+		
+	}
+	
+	@Test
+	public void testShapes(){
+		
+	}
+	
+	@Test
+	public void testIO(){
+		
+	}
+}
