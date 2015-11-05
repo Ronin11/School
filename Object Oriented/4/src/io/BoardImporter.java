@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 import sudoku.Board;
 
-public class Import {
-	File file;
-	Scanner scan;
+public class BoardImporter {
+	private File file;
+	private Scanner scan;
 	
-	public Import(File file){
+	public BoardImporter(File file){
 		this.file = file;
 		try {
 			scan = new Scanner(file);
@@ -20,21 +20,28 @@ public class Import {
 		}
 	}
 
-	public Board nextBoard(){
-		int size = this.nextBoardSize();
+	public Board getBoard(){
+		int size = this.boardSize();
+		ArrayList<Character> chars = this.getBoardChars();
 		ArrayList<String> puzzle = new ArrayList<String>();
 		for(int i = 0; i < size; i++)
 			puzzle.add(scan.nextLine());
-		return new Board(size, puzzle);
+		return new Board(size, chars, puzzle);
 	}
 	
-	private int nextBoardSize(){
+	private int boardSize(){
 		int temp = 0;
 		if(scan.hasNextLine())
 			temp = Integer.parseInt(scan.nextLine());
-		//Move beyond definition line
-		scan.nextLine();
 		return temp;
 			
+	}
+	private ArrayList<Character> getBoardChars(){
+		ArrayList<Character> temp = new ArrayList<Character>();
+		String s = scan.nextLine();
+		for(char c : s.toCharArray())
+			if(c != ' ')
+				temp.add(c);
+		return temp;
 	}
 }

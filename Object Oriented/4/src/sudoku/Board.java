@@ -1,39 +1,93 @@
 package sudoku;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Board implements SudokuContainer{
-	private ArrayList<ArrayList<Character>> board;
+public class Board extends Observable implements SudokuContainer{
+	private ArrayList<ArrayList<Cell>> board;
+	private ArrayList<Character> availableChars;
 	private int size;
 	
 
-	public Board(int size, ArrayList<String> list){
+	public Board(int size, ArrayList<Character>chars, ArrayList<String> list){
 		this.size = size;
-		board = new ArrayList<ArrayList<Character>>();
+		availableChars = chars;
+		board = new ArrayList<ArrayList<Cell>>();
 		for(int i = 0; i < size; i++){
-			board.add(new ArrayList<Character>());
+			board.add(new ArrayList<Cell>());
 			String[] temp = list.get(i).split(" ");
 			for(int j = 0; j < size; j++){
-				board.get(i).add(temp[j].charAt(0));
+				board.get(i).add(new Cell(temp[j].charAt(0), i, j));
 			}
 		}
-		
 	}
 	
-	public void build(){
-		
+	public Board(Board b){
+		this.size = b.size();
+		this.availableChars = b.getAvailableChars();
+		board = new ArrayList<ArrayList<Cell>>();
+		for(int i = 0; i < size; i++){
+			board.add(new ArrayList<Cell>());
+			for(int j = 0; j < size; j++){
+				board.get(i).add(new Cell(b.getCell(i,j).getChar(), i, j));
+			}
+		}
 	}
+	
+	public int size(){return size;}
+	public ArrayList<Character> getAvailableChars(){return availableChars;}
 	
 	public String toString(){
 		String temp = "";
 		for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				temp += board.get(i).get(j);
+				temp += board.get(i).get(j).getChar();
 			}
 			temp += '\n';
 		}
 		return temp;
 	}
+	
+	public Cell getCell(int x, int y){
+		return this.board.get(x).get(y);
+	}
+	
+	public ArrayList<Character> getRow(Cell cell){
+		return this.getRow(cell.getX());
+	}
+	
+	public ArrayList<Character> getRow(int row){
+		ArrayList<Character> temp = new ArrayList<Character>();
+		for(int i = 0; i < size; i++)
+			temp.add(board.get(row).get(i).getChar());
+		return temp;
+	}
+	
+	public ArrayList<Character> getCol(Cell cell){
+		return this.getCol(cell.getY());
+	}
+	
+	public ArrayList<Character> getCol(int col){
+		ArrayList<Character> temp = new ArrayList<Character>();
+		for(int i = 0; i < size; i++)
+			temp.add(board.get(i).get(col).getChar());
+		return temp;
+	}
+	
+	public ArrayList<Character> getBox(Cell cell){
+		return getBox((int)(cell.getX()*Math.sqrt(board.size())) + cell.getY());
+	}
+	
+	public ArrayList<Character> getBox(int box){
+		ArrayList<Character> temp = new ArrayList<Character>();
+		for(int i = 0; i < Math.sqrt(size); i++)
+			for(int j = 0; j < Math.sqrt(size); j++)
+				temp.add(board.get((int)(i+box/Math.sqrt(size)))
+						.get((int)(j+box%Math.sqrt(size))).getChar());
+		return temp;
+	}
+	
+	
 	
 	@Override
 	public Iterator getIterator() {
@@ -46,6 +100,7 @@ public class Board implements SudokuContainer{
 			xIndex = 0;
 			yIndex = 0;
 		}
+		
 		@Override
 		public boolean hasNext() {
 			if(xIndex < board.size())
@@ -55,9 +110,9 @@ public class Board implements SudokuContainer{
 		}
 
 		@Override
-		public Character next() {
+		public Cell next() {
 			if(this.hasNext()){
-				Character temp = board.get(yIndex).get(xIndex);
+				Cell temp = board.get(yIndex).get(xIndex);
 				if(xIndex + 1 < board.size())
 					xIndex++;
 				else{
