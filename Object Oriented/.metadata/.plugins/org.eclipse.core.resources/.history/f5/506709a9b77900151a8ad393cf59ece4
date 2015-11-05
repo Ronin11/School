@@ -1,7 +1,0 @@
-package command;
-
-public class Invoker {
-	private ArrayList<Command> done = new ArrayList<Command>();
-	private ArrayList<Command> toDo = new ArrayList<Command()>;
-
-}

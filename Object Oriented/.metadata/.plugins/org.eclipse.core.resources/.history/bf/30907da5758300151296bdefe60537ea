@@ -1,0 +1,22 @@
+package main;
+
+import java.util.ArrayList;
+
+import sudoku.Board;
+import sudoku.Iterator;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ArrayList<String> temp = new ArrayList<String>();
+		temp.add("1234");
+		temp.add("5678");
+		temp.add("90AB");
+		temp.add("CDEF");
+		Board b = new Board(4, temp);
+		Iterator iter = b.getIterator();
+		while(iter.hasNext())
+			System.out.println(iter.next());
+	}
+
+}

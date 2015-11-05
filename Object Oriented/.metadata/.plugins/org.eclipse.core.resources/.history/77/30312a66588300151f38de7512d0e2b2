@@ -1,0 +1,31 @@
+package sudoku;
+
+import java.util.ArrayList;
+
+public class Board implements SudokuContainer{
+	ArrayList<ArrayList<Character>> board = new ArrayList<ArrayList<Character>>(); 
+	Iterator 
+
+	public Board(int i){
+		
+	}
+	
+	@Override
+	public Iterator getIterator() {
+		return new SudokuIterator();
+	}
+	
+	private class SudokuIterator implements Iterator{
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public Character next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+}

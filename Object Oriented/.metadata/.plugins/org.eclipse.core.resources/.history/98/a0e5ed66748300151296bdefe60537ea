@@ -1,0 +1,11 @@
+package io;
+
+import java.io.File;
+
+public class Import {
+	File file;
+
+	public static Board nextBoard(File file){
+		this.file = file;
+	}
+}

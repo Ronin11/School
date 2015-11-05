@@ -1,0 +1,7 @@
+package sudoku;
+
+public enum Value {
+	A,
+	B,
+	C,
+}

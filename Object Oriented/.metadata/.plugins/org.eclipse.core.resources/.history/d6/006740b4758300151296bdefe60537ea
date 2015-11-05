@@ -1,0 +1,40 @@
+package io;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import sudoku.Board;
+
+public class Import {
+	File file;
+	Scanner scan;
+	
+	public Import(File file){
+		this.file = file;
+		try {
+			scan = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Board nextBoard(File file){
+		int size = this.nextBoardSize();
+		ArrayList<String> puzzle = new ArrayList<String>();
+		for(int i = 0; i < size; i++)
+			puzzle.add(scan.nextLine());
+		return new Board(size, puzzle);
+	}
+	
+	private int nextBoardSize(){
+		int temp = 0;
+		if(scan.hasNextLine())
+			temp = Integer.parseInt(scan.nextLine());
+		//Move beyond definition line
+		scan.nextLine();
+		return temp;
+			
+	}
+}

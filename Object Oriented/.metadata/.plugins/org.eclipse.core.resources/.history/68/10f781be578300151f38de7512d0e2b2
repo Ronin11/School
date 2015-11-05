@@ -1,0 +1,9 @@
+package sudoku;
+
+public class Board {
+	ArrayList<ArrayList<Character>> board = new ArrayList<ArrayList<Character>>(); 
+
+	public Board(int i){
+		
+	}
+}

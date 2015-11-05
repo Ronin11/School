@@ -1,0 +1,16 @@
+package main;
+
+import sudoku.Board;
+import sudoku.Iterator;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ArrayList<String> temp = new ArrayList<String>();
+		Board b = new Board(4);
+		Iterator iter = b.getIterator();
+		while(iter.hasNext())
+			System.out.println(iter.next());
+	}
+
+}

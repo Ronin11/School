@@ -1,9 +1,0 @@
-package command;
-
-import object.Shape;
-
-public abstract class Command {
-	Shape shape;
-	public abstract void doCommand();
-	public abstract void undoCommand();
-}

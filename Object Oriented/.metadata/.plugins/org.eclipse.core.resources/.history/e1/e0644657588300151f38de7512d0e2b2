@@ -1,0 +1,12 @@
+package sudoku;
+
+import java.util.ArrayList;
+
+public class Board implements SudokuContainer{
+	ArrayList<ArrayList<Character>> board = new ArrayList<ArrayList<Character>>(); 
+	Iterator 
+
+	public Board(int i){
+		
+	}
+}
