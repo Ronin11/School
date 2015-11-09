@@ -58,8 +58,19 @@ public class Board extends Observable implements SudokuContainer{
 	
 	public ArrayList<Character> getRow(int row){
 		ArrayList<Character> temp = new ArrayList<Character>();
+		for(Cell c : getRowCells(row))
+			temp.add(c.getChar());
+		return temp;
+	}
+	
+	public ArrayList<Cell> getRowCells(Cell cell){
+		return this.getRowCells(cell.getY());
+	}
+	
+	public ArrayList<Cell> getRowCells(int row){
+		ArrayList<Cell> temp = new ArrayList<Cell>();
 		for(int i = 0; i < size; i++)
-			temp.add(board.get(row).get(i).getChar());
+			temp.add(board.get(row).get(i));
 		return temp;
 	}
 	
@@ -69,21 +80,43 @@ public class Board extends Observable implements SudokuContainer{
 	
 	public ArrayList<Character> getCol(int col){
 		ArrayList<Character> temp = new ArrayList<Character>();
+		for(Cell c : getColCells(col))
+			temp.add(c.getChar());
+		return temp;
+	}
+	
+	public ArrayList<Cell> getColCells(Cell cell){
+		return this.getColCells(cell.getY());
+	}
+	
+	public ArrayList<Cell> getColCells(int col){
+		ArrayList<Cell> temp = new ArrayList<Cell>();
 		for(int i = 0; i < size; i++)
-			temp.add(board.get(i).get(col).getChar());
+			temp.add(board.get(i).get(col));
 		return temp;
 	}
 	
 	public ArrayList<Character> getBox(Cell cell){
-		return getBox((int)(cell.getX()*Math.sqrt(board.size())) + cell.getY());
+		return this.getBox(((int)(cell.getX()*Math.sqrt(board.size())) + cell.getY())/board.size()+1);
 	}
 	
 	public ArrayList<Character> getBox(int box){
 		ArrayList<Character> temp = new ArrayList<Character>();
+		for(Cell c : getBoxCells(box))
+			temp.add(c.getChar());
+		return temp;
+	}
+	
+	public ArrayList<Cell> getBoxCells(Cell cell){
+		return this.getBoxCells(((int)(cell.getX()*Math.sqrt(board.size())) + cell.getY())/board.size()+1);
+	}
+	
+	public ArrayList<Cell> getBoxCells(int box){
+		ArrayList<Cell> temp = new ArrayList<Cell>();
 		for(int i = 0; i < Math.sqrt(size); i++)
 			for(int j = 0; j < Math.sqrt(size); j++)
-				temp.add(board.get((int)(i+box/Math.sqrt(size)))
-						.get((int)(j+box%Math.sqrt(size))).getChar());
+				temp.add(board.get((int)(i+(box/(int)Math.sqrt(size))*Math.sqrt(size)))
+						.get((int)(j+(box%(int)Math.sqrt(size))*Math.sqrt(size))));
 		return temp;
 	}
 	

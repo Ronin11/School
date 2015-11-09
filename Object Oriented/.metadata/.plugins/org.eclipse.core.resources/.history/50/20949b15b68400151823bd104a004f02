@@ -1,0 +1,25 @@
+package solver;
+
+import sudoku.Board;
+import sudoku.Cell;
+import sudoku.Iterator;
+
+public class CrooksSolver extends Solver {
+
+	protected CrooksSolver(Board b) {
+		super(b);
+	}
+
+	@Override
+	public Board solve() {
+		Iterator iterator = board.getIterator();
+		while(iterator.hasNext()){
+			Cell cell = iterator.next();
+			if(cell.getChar() == '-')
+				this.setPossibilities(cell);
+				
+		}
+		return null;
+	}
+
+}

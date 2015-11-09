@@ -1,0 +1,18 @@
+package solver;
+
+import sudoku.Board;
+
+public class BruteForceSolver extends Solver{
+
+	protected BruteForceSolver(Board b) {
+		super(b);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public Board solve() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

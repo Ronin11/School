@@ -43,6 +43,8 @@
 <fullyQualifiedTypeName name="io.XML"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="sudoku.Board"/>
-<fullyQualifiedTypeName name="sudoku.Iterator"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="sudoku.Iterator"/>
+<fullyQualifiedTypeName name="sudoku.Cell"/>
 </qualifiedTypeNameHistroy>

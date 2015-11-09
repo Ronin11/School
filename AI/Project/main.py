@@ -7,16 +7,16 @@ DATAFILENAME = "stockData.h5"
 def test():
 	ai = AI.AI()
 	for i in range(1, 10):
-		ai.append(i,1)
-	print ai.predict()
+		ai.append(i,i*10)
+	print ai.neuralPredict()
 
 def run():
 	data = h5py.File(DATAFILENAME, 'r')
 	for level1 in data:
 		for level2 in data[level1]:
-			print data[level1]['axis2']
-			#for level3 in data[level1][level2]:
-				#print level3
+			#print data[level1]['axis2']
+			for level3 in data[level1][level2]:
+				print level3
 	#temp = data['financials']
 	#print temp['block0_items'].shape
 
