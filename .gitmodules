@@ -1,0 +1,6 @@
+[submodule "zipline"]
+	path = zipline
+	url = https://github.com/quantopian/zipline
+[submodule "pybrain"]
+	path = pybrain
+	url = https://github.com/pybrain/pybrain
