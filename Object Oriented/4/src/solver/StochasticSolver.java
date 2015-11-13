@@ -14,14 +14,16 @@ public class StochasticSolver extends Solver {
 	}
 	
 	@Override
-	public Board solve() {
+	public boolean solve() {
+		if(!isValid())
+			return false;
 		//Create Copy
 		startingBoard = new Board(board);
 		while(!this.isSolved()){
 			board = new Board(startingBoard);
 			shuffle();
 		}
-		return board;
+		return true;
 	}
 	
 	private void shuffle(){

@@ -7,18 +7,23 @@ public class Board extends Observable implements SudokuContainer{
 	private ArrayList<ArrayList<Cell>> board;
 	private ArrayList<Character> availableChars;
 	private int size;
+	protected boolean unsolvable = false;
 	
 
 	public Board(int size, ArrayList<Character>chars, ArrayList<String> list){
-		this.size = size;
-		availableChars = chars;
-		board = new ArrayList<ArrayList<Cell>>();
-		for(int i = 0; i < size; i++){
-			board.add(new ArrayList<Cell>());
-			String[] temp = list.get(i).split(" ");
-			for(int j = 0; j < size; j++){
-				board.get(i).add(new Cell(temp[j].charAt(0), i, j));
+		try{
+			this.size = size;
+			availableChars = chars;
+			board = new ArrayList<ArrayList<Cell>>();
+			for(int i = 0; i < size; i++){
+				board.add(new ArrayList<Cell>());
+				String[] temp = list.get(i).split(" ");
+				for(int j = 0; j < size; j++){
+					board.get(i).add(new Cell(temp[j].charAt(0), i, j));
+				}
 			}
+		} catch (IndexOutOfBoundsException e){
+			unsolvable = true;
 		}
 	}
 	
@@ -35,13 +40,14 @@ public class Board extends Observable implements SudokuContainer{
 	}
 	
 	public int size(){return size;}
+	public boolean unsolvable(){return unsolvable;}
 	public ArrayList<Character> getAvailableChars(){return availableChars;}
 	
 	public String toString(){
 		String temp = "";
 		for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				temp += board.get(i).get(j).getChar();
+				temp += board.get(i).get(j).getChar() + " ";
 			}
 			temp += '\n';
 		}

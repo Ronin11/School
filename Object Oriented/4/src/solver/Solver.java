@@ -9,7 +9,7 @@ import sudoku.*;
 
 public abstract class Solver {
 	protected Board board;
-	public abstract Board solve();
+	public abstract boolean solve();
 	
 	protected Solver(Board b){
 		board = b;
@@ -23,12 +23,16 @@ public abstract class Solver {
 		return this.isValid();
 	}
 	
-	protected boolean isValid(){
+	public boolean isValid(){
+		if(board.unsolvable())
+			return false;
 		for(int i = 0; i < board.size(); i++)
 			if(!(this.isRowValid(i) && this.isColValid(i) && this.isBoxValid(i)))
 				return false;
 		return true;
 	}
+	
+	public Board getBoard(){return board;}
 	
 	protected boolean isInsertionValid(Cell cell){
 		ArrayList<Character> rowCheck = board.getRow(cell);
