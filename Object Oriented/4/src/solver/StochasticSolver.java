@@ -7,10 +7,14 @@ import sudoku.*;
 public class StochasticSolver extends Solver {
 	private Board startingBoard;
 	private Random random;
+	private final int limit = 1000000;
+	private int iteration = 0;
 	
 	public StochasticSolver(Board b){
 		super(b);
 		random = new Random();
+		//Create Copy
+		startingBoard = new Board(board);
 	}
 	
 	@Override
@@ -20,6 +24,8 @@ public class StochasticSolver extends Solver {
 		//Create Copy
 		startingBoard = new Board(board);
 		while(!this.isSolved()){
+			if(iteration++ > limit)
+				return false;
 			board = new Board(startingBoard);
 			shuffle();
 		}

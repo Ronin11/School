@@ -7,18 +7,22 @@ import sudoku.Cell;
 import sudoku.Iterator;
 
 public class CrooksSolver extends Solver {
+	private final int limit = 1000;
+	static int iterations = 0;
 
 	public CrooksSolver(Board b) {
 		super(b);
 	}
 
 	@Override
-	public Board solve() {
+	public boolean solve() {
 		while(!isSolved()){
+			if(iterations++ > limit)
+				return false;
 			setBoardPossibilities();
 			setBoardOnlyPossibilities();
 		}
-		return board;
+		return true;
 	}
 	
 	private void setBoardPossibilities(){

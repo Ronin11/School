@@ -16,18 +16,25 @@ public abstract class Solver {
 	}
 	
 	protected boolean isSolved(){
-		Iterator iterator = board.getIterator();
+		return isSolved(this.board);
+	}
+	
+	protected boolean isSolved(Board b){
+		Iterator iterator = b.getIterator();
 		while(iterator.hasNext())
 			if(iterator.next().getChar() == '-')
 				return false;
 		return this.isValid();
 	}
-	
 	public boolean isValid(){
-		if(board.unsolvable())
+		return isValid(this.board);
+	}
+	
+	public boolean isValid(Board b){
+		if(b.unsolvable())
 			return false;
-		for(int i = 0; i < board.size(); i++)
-			if(!(this.isRowValid(i) && this.isColValid(i) && this.isBoxValid(i)))
+		for(int i = 0; i < b.size(); i++)
+			if(!(this.isRowValid(b, i) && this.isColValid(b, i) && this.isBoxValid(b, i)))
 				return false;
 		return true;
 	}
@@ -53,7 +60,7 @@ public abstract class Solver {
 		//If there are duplicate characters, the set will combine them into 1 element
 		return !(set.size() < list.size());
 	}
-	
+	/*
 	protected boolean isRowValid(int row){
 		return this.isListValid(board.getRow(row));
 	}
@@ -64,5 +71,17 @@ public abstract class Solver {
 
 	protected boolean isBoxValid(int box){
 		return this.isListValid(board.getBox(box));
+	}	
+	*/
+	protected boolean isRowValid(Board b,int row){
+		return this.isListValid(b.getRow(row));
+	}
+	
+	protected boolean isColValid(Board b, int col){
+		return this.isListValid(b.getCol(col));
+	}
+
+	protected boolean isBoxValid(Board b, int box){
+		return this.isListValid(b.getBox(box));
 	}	
 }

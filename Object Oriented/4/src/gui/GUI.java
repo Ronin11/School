@@ -40,7 +40,7 @@ public class GUI {
 
 	private JPanel panel;
 	private JFrame frame;
-	private final Object[] solvers = {"Crooks", "Brute Force", "Stochastic"};
+	private final Object[] solvers = { "Brute Force", "Crooks", "Stochastic"};
 	private SudokuSolver solver;
 	
 	private JMenuBar buildMenuBar(JFrame frame){
@@ -65,11 +65,13 @@ public class GUI {
 		});
 		
 		
-		JMenuItem createCanvas = new JMenuItem("Select Solver");
-		file.add(createCanvas);
-		createCanvas.addActionListener(new ActionListener(){
+		JMenuItem selectSolver = new JMenuItem("Select Solver");
+		file.add(selectSolver);
+		selectSolver.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				if(solver == null)
+					return;
 				String s = (String)JOptionPane.showInputDialog(
 				                    frame,
 				                    "Please select the solver you want to use.",
@@ -81,7 +83,14 @@ public class GUI {
 
 				//If a string was returned, say so.
 				if ((s != null) && (s.length() > 0)) {
-				    return;
+					solver.setSolver(s);
+					if(solver.solve()){
+						clearGUI();
+						setup(solver.getBoard());
+						solved();
+					}
+					else
+						notSolvable();
 				}
 
 				//If you're here, the return value was null/empty.
@@ -102,11 +111,13 @@ public class GUI {
  
 		});
 		
-		JMenuItem importFile = new JMenuItem("Import");
+		JMenuItem importFile = new JMenuItem("Load");
 		file.add(importFile);
 		importFile.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				clearGUI();
+				frame.pack();
 				JFileChooser chooser = new JFileChooser();
 				if(JFileChooser.APPROVE_OPTION == chooser.showOpenDialog(frame)){
 					File file = chooser.getSelectedFile();
@@ -144,6 +155,23 @@ public class GUI {
 		frame.pack();
 	}
 	
+	private void clearGUI(){
+		panel.removeAll();
+	}
+	
+	public void notSolvable(){
+		JOptionPane.showMessageDialog(frame,
+			    "Board is not solvable with the current solver.",
+			    "Board error",
+			    JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void solved(){
+		JOptionPane.showMessageDialog(frame,
+			    "Board is solved, displaying solution.",
+			    "Solved",
+			    JOptionPane.INFORMATION_MESSAGE);
+	}
 	
 	
 	

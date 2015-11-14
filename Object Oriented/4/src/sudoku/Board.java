@@ -42,6 +42,14 @@ public class Board extends Observable implements SudokuContainer{
 	public int size(){return size;}
 	public boolean unsolvable(){return unsolvable;}
 	public ArrayList<Character> getAvailableChars(){return availableChars;}
+	public ArrayList<Cell> getAllCells(){
+		ArrayList<Cell> temp = new ArrayList<Cell>();
+		
+		for(int i = 0; i < size; i++)
+			temp.addAll(board.get(i));
+		
+		return temp;
+	}
 	
 	public String toString(){
 		String temp = "";
