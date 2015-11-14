@@ -12,10 +12,13 @@ public class BoardExporter {
 		PrintWriter writer = null;
 		try {
 			 writer = new PrintWriter(file);
-			 writer.write(Integer.toString(board.size()) + '\n');
-			 for(Character c : board.getAvailableChars())
-				 writer.write(c + " ");
-			 writer.write('\n' + board.toString());
+			 writer.write(Integer.toString(board.size()) + "\r\n");
+			 for(int i = 0; i < board.getAvailableChars().size(); i++){
+				 	writer.write(board.getAvailableChars().get(i));
+				 	if(i+1 < board.getAvailableChars().size())
+				 		writer.write(" ");
+			 }
+			 writer.write("\r\n" + board.toString());
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

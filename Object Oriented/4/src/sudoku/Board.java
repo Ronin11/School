@@ -55,9 +55,11 @@ public class Board extends Observable implements SudokuContainer{
 		String temp = "";
 		for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				temp += board.get(i).get(j).getChar() + " ";
+				temp += board.get(i).get(j).getChar();
+				if(j+1 < size)
+					temp += " ";
 			}
-			temp += '\n';
+			temp += "\r\n";
 		}
 		return temp;
 	}
