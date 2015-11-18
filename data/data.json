@@ -1,6 +1,4 @@
-/* AAPL historical OHLC data from the Google Finance API */
 [
-/* Nov 2008 */
 [1227052800000,12.33],
 [1227139200000,11.50],
 [1227225600000,11.80],
