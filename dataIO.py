@@ -1,4 +1,4 @@
-import calendar, time
+import calendar, time, os
 
 def getTimeStamp(timestamp):
 		return str(int(time.mktime(time.strptime(str(timestamp), "%Y-%m-%d %H:%M:%S"))));
@@ -12,7 +12,11 @@ class dataManager:
 		self.file.write('[' + getTimeStamp(timestamp) + ',' + str(value) + '],\n')
 
 	def close(self):
-		self.file.write('[]\n]')
+		#Remove last placed comma
+		self.file.seek(-2, os.SEEK_END)
+		self.file.truncate()
+
+		self.file.write('\n]')
 		self.file.close()
 
 	
