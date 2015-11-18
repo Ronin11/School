@@ -12,7 +12,7 @@ class dataManager:
 		self.file.write('[' + getTimeStamp(timestamp) + ',' + str(value) + '],\n')
 
 	def close(self):
-		self.file.write(']')
+		self.file.write('[]\n]')
 		self.file.close()
 
 	
