@@ -1,7 +1,8 @@
 from pyalgotrade import strategy
 from pyalgotrade.barfeed import yahoofeed
 from pyalgotrade.technical import ma
-import dataIO
+
+import dataIO, main
 
 class MyStrategy(strategy.BacktestingStrategy):
     def __init__(self, feed, instrument, smaPeriod):
@@ -31,6 +32,7 @@ class MyStrategy(strategy.BacktestingStrategy):
 
     def onBars(self, bars):
         self.datamanager.append(bars.getDateTime(), self.getBroker().getEquity())
+
         # Wait for enough bars to be available to calculate a SMA.
         if self.__sma[-1] is None:
             return
@@ -49,7 +51,7 @@ class MyStrategy(strategy.BacktestingStrategy):
 def run_strategy(smaPeriod):
     # Load the yahoo feed from the CSV file
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV("orcl", "orcl-2000.csv")
+    feed.addBarsFromCSV("orcl", main.getDataFileName())
 
     # Evaluate the strategy with the feed.
     myStrategy = MyStrategy(feed, "orcl", smaPeriod)
@@ -57,4 +59,4 @@ def run_strategy(smaPeriod):
     print "Final portfolio value: $%.2f" % myStrategy.getBroker().getEquity()
     myStrategy.datamanager.close()
 
-run_strategy(15)
+run_strategy(20)

@@ -21,6 +21,9 @@ def clean():
 		os.remove(DATAFILENAME)
 	print "~~ Done Cleaning ~~"
 
+def getDataFileName():
+	return DATAFILENAME
+
 
 
 if __name__ == '__main__':
