@@ -5,6 +5,8 @@ from pyalgotrade.technical import ma
 
 import dataIO, main
 
+prevPrice = 0
+
 class MyStrategy(strategy.BacktestingStrategy):
     def __init__(self, feed, instrument, smaPeriod):
         strategy.BacktestingStrategy.__init__(self, feed, 1000)

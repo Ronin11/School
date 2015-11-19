@@ -4,3 +4,6 @@
 [submodule "pyalgotrade"]
 	path = pyalgotrade
 	url = https://github.com/gbeced/pyalgotrade.git
+[submodule "scikit-learn"]
+	path = scikit-learn
+	url = https://github.com/scikit-learn/scikit-learn.git
