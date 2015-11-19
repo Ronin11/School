@@ -50,7 +50,7 @@ class MyStrategy(strategy.BacktestingStrategy):
 
 
 def run_strategy():
-    smaPeriod = 20
+    smaPeriod = 30
     # Load the yahoo feed from the CSV file
     securities = ["orcl"]
     feed = yahoofinance.build_feed(securities, 2006, 2012, "stockdata")
