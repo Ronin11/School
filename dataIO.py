@@ -1,7 +1,7 @@
 import calendar, time, os
 
 def getTimeStamp(timestamp):
-		return str(int(time.mktime(time.strptime(str(timestamp), "%Y-%m-%d %H:%M:%S"))));
+		return str(int(time.mktime(time.strptime(str(timestamp), "%Y-%m-%d %H:%M:%S")))*1000);
 
 class dataManager:
 	def __init__(self):
@@ -13,7 +13,7 @@ class dataManager:
 
 	def close(self):
 		#Remove last placed comma
-		self.file.seek(-2, os.SEEK_END)
+		self.file.seek(-3, os.SEEK_END)
 		self.file.truncate()
 
 		self.file.write('\n]')
