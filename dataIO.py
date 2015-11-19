@@ -9,7 +9,7 @@ class dataManager:
 		self.file.write('[\n')
 
 	def append(self, timestamp, value):
-		self.file.write('[' + getTimeStamp(timestamp) + ',' + str(value) + '],\n')
+		self.file.write('[' + getTimeStamp(timestamp) + ',' + str(round(value, 2)) + '],\n')
 
 	def close(self):
 		#Remove last placed comma
