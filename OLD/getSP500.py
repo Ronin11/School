@@ -2,7 +2,7 @@ import urllib2
 import pytz
 import pandas as pd
 
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 from datetime import datetime
 from pandas.io.data import DataReader
 
@@ -71,9 +71,10 @@ def store_HDF5(sector_ohlc, path):
 
 def get_snp500(fileName):
     sector_tickers = scrape_list(SITE)
+    print sector_tickers
     sector_ohlc = download_ohlc(sector_tickers, START, END)
     store_HDF5(sector_ohlc, fileName)
 
 
 if __name__ == '__main__':
-    get_snp500()
+    get_snp500("test")
