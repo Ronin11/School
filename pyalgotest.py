@@ -16,7 +16,7 @@ class MyStrategy(strategy.BacktestingStrategy):
 		self.setUseAdjustedValues(True)
 		self.__sma = ma.SMA(feed[instrument].getPriceDataSeries(), smaPeriod)
 		self.datamanager = dataIO.dataManager()
-		self.predictor = changePredictors.randomForestChangePredictor()
+		#self.predictor = changePredictors.randomForestChangePredictor()
 
 	def onEnterOk(self, position):
 		execInfo = position.getEntryOrder().getExecutionInfo()
@@ -35,8 +35,7 @@ class MyStrategy(strategy.BacktestingStrategy):
 		self.__position.exitMarket()
 
 	def onBars(self, bars):
-		#data = bars.getBar()
-		#self.datamanager.append(data.getDateTime(), self.getBroker().getEquity())
+		self.datamanager.append(bars.getDateTime(), self.getBroker().getEquity())
 		#print self.predictor.predict([data.getVolume(), data.getOpen(), data.getHigh(), data.getAdjClose()])
 		# Wait for enough bars to be available to calculate a SMA.
 		if self.__sma[-1] is None:
