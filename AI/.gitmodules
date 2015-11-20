@@ -1,6 +1,9 @@
 [submodule "pybrain"]
 	path = pybrain
 	url = https://github.com/pybrain/pybrain
-[submodule "zipline"]
-	path = zipline
-	url = https://github.com/quantopian/zipline
+[submodule "pyalgotrade"]
+	path = pyalgotrade
+	url = https://github.com/gbeced/pyalgotrade.git
+[submodule "scikit-learn"]
+	path = scikit-learn
+	url = https://github.com/scikit-learn/scikit-learn.git
