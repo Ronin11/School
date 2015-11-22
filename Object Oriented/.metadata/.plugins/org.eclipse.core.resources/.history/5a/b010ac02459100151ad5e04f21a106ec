@@ -1,0 +1,12 @@
+package task;
+
+import java.util.ArrayList;
+
+public class Task {
+	protected ArrayList<Task> subtasks = new ArrayList<Task>();
+	protected ArrayList<Engineer> assignedEngineers = new ArrayList<Engineer>();
+	protected int id;
+	protected String label;
+	protected String description;
+	
+}
