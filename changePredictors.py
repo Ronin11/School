@@ -6,8 +6,9 @@ from sklearn.ensemble import RandomForestRegressor
 from dataStructure import dataStructure
 
 class changePredictor:
-	def __init__(self):
+	def __init__(self, *args):
 		self.predictor = "predictor"
+		self.data = dataStructure(args)
 
 class neuralNetworkChangePredictor(changePredictor):
 	def __init__(self, *args):
@@ -26,6 +27,7 @@ class neuralNetworkChangePredictor(changePredictor):
 
 class randomForestChangePredictor(changePredictor):
 	def __init__(self, *args):
+		#super().__init__(args)
 		self.predictor = "predictor"
 		self.data = dataStructure(args)
 
@@ -40,4 +42,7 @@ class randomForestChangePredictor(changePredictor):
 		prediction = clf.predict(list(currentData[0]))
 		
 		self.data.append(list(currentData[0]))
+		print "Prediction: " + str(prediction) + "Previous: " + str(list(currentData[0]))
+		if prediction != 0: 
+			prediction = (list(currentData[0])/prediction)-1
 		return prediction

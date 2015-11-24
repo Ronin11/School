@@ -1,3 +1,4 @@
+from sklearn import preprocessing
 
 class dataStructure:
 	def __init__(self, *args):
@@ -15,3 +16,6 @@ class dataStructure:
 
 	def size(self):
 		return len(self.data)
+
+	def normalize(self):
+		return preprocessing.scale(self.data)

@@ -3,20 +3,19 @@ from pyalgotrade.barfeed import yahoofeed
 from pyalgotrade.tools import yahoofinance
 from pyalgotrade.technical import ma
 
-import dataIO, main, changePredictors
+import dataIO, main, changePredictors, tradeIndicator
 
 prevPrice = 0
 
-class masterTrader(strategy.BacktestingStrategy):
+class MasterTrader(strategy.BacktestingStrategy):
 	def __init__(self, feed, instrument):
 		strategy.BacktestingStrategy.__init__(self, feed, 1000)
 		self.__position = None
 		self.__instrument = instrument
 		# We'll use adjusted close values instead of regular close values.
 		self.setUseAdjustedValues(True)
-		self.__sma = ma.SMA(feed[instrument].getPriceDataSeries(), smaPeriod)
 		self.datamanager = dataIO.dataManager()
-		self.predictor = changePredictors.randomForestChangePredictor()
+		self.indicator = tradeIndicator.TradeIndicator()
 
 	def onEnterOk(self, position):
 		execInfo = position.getEntryOrder().getExecutionInfo()
@@ -35,26 +34,25 @@ class masterTrader(strategy.BacktestingStrategy):
 		self.__position.exitMarket()
 
 	def onBars(self, bars):
-		#data = bars.getBar()
+		print self.__instrument
+		data = bars.getBar(self.__instrument[0])
 		#self.datamanager.append(data.getDateTime(), self.getBroker().getEquity())
 		#print self.predictor.predict([data.getVolume(), data.getOpen(), data.getHigh(), data.getAdjClose()])
-		# Wait for enough bars to be available to calculate a SMA.
-		if self.__sma[-1] is None:
-			return
-
-		bar = bars[self.__instrument]
+	
+		#bar = bars[self.__instrument]
+		print data
+		return
 		# If a position was not opened, check if we should enter a long position.
 		if self.__position is None:
-			if bar.getPrice() > self.__sma[-1]:
+			if self.indicator.indicate(bars) > 0:
 				# Enter a buy market order for 10 shares. The order is good till canceled.
 				self.__position = self.enterLong(self.__instrument, 10, True)
 		# Check if we have to exit the position.
-		elif bar.getPrice() < self.__sma[-1] and not self.__position.exitActive():
+		elif self.indicator.indicate(bars) < 0 and not self.__position.exitActive():
 			self.__position.exitMarket()
 
 
 def run_strategy():
-	smaPeriod = 30
 	# Load the yahoo feed from the CSV file
 	securities = ["orcl"]
 	feed = yahoofinance.build_feed(securities, 2006, 2012, "stockdata")
