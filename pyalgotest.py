@@ -55,11 +55,11 @@ class MyStrategy(strategy.BacktestingStrategy):
 def run_strategy():
 	smaPeriod = 30
 	# Load the yahoo feed from the CSV file
-	securities = ["orcl"]
+	securities = ["aapl"]
 	feed = yahoofinance.build_feed(securities, 2006, 2012, "stockdata")
 
 	# Evaluate the strategy with the feed.
-	myStrategy = MyStrategy(feed, "orcl", smaPeriod)
+	myStrategy = MyStrategy(feed, "aapl", smaPeriod)
 	myStrategy.run()
 	print "Final portfolio value: $%.2f" % myStrategy.getBroker().getEquity()
 	myStrategy.datamanager.close()

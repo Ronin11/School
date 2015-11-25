@@ -54,7 +54,7 @@ class MasterTrader(strategy.BacktestingStrategy):
 
 def run_strategy():
 	# Load the yahoo feed from the CSV file
-	securities = ["orcl"]
+	securities = ["aapl"]
 	feed = yahoofinance.build_feed(securities, 2006, 2012, "stockdata")
 
 	# Evaluate the strategy with the feed.
