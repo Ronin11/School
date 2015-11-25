@@ -6,14 +6,14 @@ from sklearn.ensemble import RandomForestRegressor
 from dataStructure import dataStructure
 
 class changePredictor:
-	def __init__(self, *args):
+	def __init__(self):
 		self.predictor = "predictor"
-		self.data = dataStructure(args)
+		self.data = dataStructure()
 
 class neuralNetworkChangePredictor(changePredictor):
-	def __init__(self, *args):
-		self.net = buildNetwork(len(args[0]),3,1)
-		self.data = dataStructure(args)
+	def __init__(self):
+		self.net = buildNetwork(2,3,1)
+		self.data = dataStructure()
 
 	def predict(self, currentData):
 		dataset = SupervisedDataSet(len(list(currentData[0])), 1)
@@ -26,12 +26,16 @@ class neuralNetworkChangePredictor(changePredictor):
 		return prediction
 
 class randomForestChangePredictor(changePredictor):
-	def __init__(self, *args):
+	def __init__(self):
 		#super().__init__(args)
 		self.predictor = "predictor"
-		self.data = dataStructure(args)
+		self.data = dataStructure()
 
 	def predict(self, currentData):
+
+		if not self.data.toArray():
+			self.data.append(currentData)
+			return
 		trainAll = []
 			   
 		for index in range(0, self.data.size()):
@@ -39,10 +43,10 @@ class randomForestChangePredictor(changePredictor):
 
 		clf = RandomForestRegressor(n_estimators=10)
 		clf.fit (self.data.toArray(), trainAll)
-		prediction = clf.predict(list(currentData[0]))
+		prediction = clf.predict(currentData)
 		
-		self.data.append(list(currentData[0]))
-		print "Prediction: " + str(prediction) + "Previous: " + str(list(currentData[0]))
+		self.data.append(currentData)
+		print "Prediction: " + str(prediction) + "Previous: " + str(currentData[0])
 		if prediction != 0: 
-			prediction = (list(currentData[0])/prediction)-1
+			prediction = (currentData[0]/prediction)-1
 		return prediction

@@ -34,13 +34,13 @@ class MasterTrader(strategy.BacktestingStrategy):
 		self.__position.exitMarket()
 
 	def onBars(self, bars):
-		print self.__instrument
-		data = bars.getBar(self.__instrument[0])
+		#print self.__instrument
+		temp = bars.getBar(self.__instrument[0])
+		data = [temp.getAdjClose(), temp.getClose(), temp.getHigh(), temp.getVolume()]
 		#self.datamanager.append(data.getDateTime(), self.getBroker().getEquity())
 		#print self.predictor.predict([data.getVolume(), data.getOpen(), data.getHigh(), data.getAdjClose()])
-	
+		self.indicator.indicate(data)
 		#bar = bars[self.__instrument]
-		print data
 		return
 		# If a position was not opened, check if we should enter a long position.
 		if self.__position is None:
