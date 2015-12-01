@@ -14,6 +14,7 @@ class neuralNetworkChangePredictor(changePredictor):
 	def __init__(self):
 		self.net = buildNetwork(2,3,1)
 		self.data = dataStructure()
+		self.prevValue = 0;
 
 	def predict(self, currentData):
 		dataset = SupervisedDataSet(len(list(currentData[0])), 1)
@@ -30,23 +31,28 @@ class randomForestChangePredictor(changePredictor):
 		#super().__init__(args)
 		self.predictor = "predictor"
 		self.data = dataStructure()
+		#self.prevPrediction = 0;
 
 	def predict(self, currentData):
-
 		if not self.data.toArray():
 			self.data.append(currentData)
 			return
 		trainAll = []
-			   
-		for index in range(0, self.data.size()):
-			trainAll.append(index)
+		tempArr = self.data.toArray()[self.data.size()-100:self.data.size()]
+		for index in range(0, len(tempArr)):
+			trainAll.append(tempArr[index])
 
 		clf = RandomForestRegressor(n_estimators=10)
-		clf.fit (self.data.toArray(), trainAll)
-		prediction = clf.predict(currentData)
+		clf.fit (tempArr, trainAll)
+		prediction = clf.predict(currentData)[0][0]
 		
 		self.data.append(currentData)
-		print "Prediction: " + str(prediction) + "Previous: " + str(currentData[0])
+		#if self.prevPrediction != 0:
+		#print "Actual: " + str(currentData[0]) + " Predicted: " \
+		#	+ str(self.prevPrediction) \
+		#	+ " Next: " + str(prediction)
+		#self.prevPrediction = prediction	
+
 		if prediction != 0: 
 			prediction = (currentData[0]/prediction)-1
 		return prediction

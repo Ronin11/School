@@ -36,7 +36,7 @@ class MyStrategy(strategy.BacktestingStrategy):
 
 	def onBars(self, bars):
 		self.datamanager.append(bars.getDateTime(), self.getBroker().getEquity())
-		#print self.predictor.predict([data.getVolume(), data.getOpen(), data.getHigh(), data.getAdjClose()])
+		
 		# Wait for enough bars to be available to calculate a SMA.
 		if self.__sma[-1] is None:
 			return

@@ -20,5 +20,6 @@ class TradeIndicator:
 if __name__ == '__main__':
 	print "tradeIndicator Test"
 	test = TradeIndicator()
-	for x in reversed(range(100)):
-		print "Test: " + str(test.indicate(x*2))
+	for x in range(10):
+		print "Test: " + str(test.indicate([x*2, x]))
+		#test.indicate([x*2, x, x+2])

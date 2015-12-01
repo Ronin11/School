@@ -34,22 +34,27 @@ class MasterTrader(strategy.BacktestingStrategy):
 		self.__position.exitMarket()
 
 	def onBars(self, bars):
-		#print self.__instrument
-		temp = bars.getBar(self.__instrument[0])
+		temp = bars.getBar(self.__instrument)
 		data = [temp.getAdjClose(), temp.getClose(), temp.getHigh(), temp.getVolume()]
-		#self.datamanager.append(data.getDateTime(), self.getBroker().getEquity())
-		#print self.predictor.predict([data.getVolume(), data.getOpen(), data.getHigh(), data.getAdjClose()])
-		self.indicator.indicate(data)
-		#bar = bars[self.__instrument]
-		return
+		
+		self.datamanager.append(bars.getDateTime(), self.getBroker().getEquity())
+		
+
+		change = self.indicator.indicate(data)
+		if change is None:
+			print "Not ready"
+			return
+
+		bar = bars[self.__instrument]
 		# If a position was not opened, check if we should enter a long position.
 		if self.__position is None:
-			if self.indicator.indicate(bars) > 0:
+			if change > 0:
 				# Enter a buy market order for 10 shares. The order is good till canceled.
 				self.__position = self.enterLong(self.__instrument, 10, True)
 		# Check if we have to exit the position.
-		elif self.indicator.indicate(bars) < 0 and not self.__position.exitActive():
+		elif change < 0 and not self.__position.exitActive():
 			self.__position.exitMarket()
+
 
 
 def run_strategy():
@@ -58,7 +63,7 @@ def run_strategy():
 	feed = yahoofinance.build_feed(securities, 2006, 2012, "stockdata")
 
 	# Evaluate the strategy with the feed.
-	masterTrader = MasterTrader(feed, securities)
+	masterTrader = MasterTrader(feed, securities[0])
 	masterTrader.run()
 	print "Final portfolio value: $%.2f" % masterTrader.getBroker().getEquity()
 	masterTrader.datamanager.close()
