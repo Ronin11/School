@@ -1,4 +1,4 @@
-import sys, os, pyalgotest, masterTrader, test
+import sys, os, masterTrader, test
 from pyalgotrade.tools import yahoofinance
 
 def initialize():
