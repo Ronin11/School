@@ -5,6 +5,9 @@ from pybrain.tools.shortcuts import buildNetwork
 from sklearn.ensemble import RandomForestRegressor
 from dataStructure import dataStructure
 
+
+window = 20
+
 class changePredictor:
 	def __init__(self):
 		self.predictor = "predictor"
@@ -38,7 +41,7 @@ class randomForestChangePredictor(changePredictor):
 			self.data.append(currentData)
 			return
 		trainAll = []
-		tempArr = self.data.toArray()[self.data.size()-100:self.data.size()]
+		tempArr = self.data.toArray()[self.data.size()-window:self.data.size()]
 		for index in range(0, len(tempArr)):
 			trainAll.append(tempArr[index])
 

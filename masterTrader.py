@@ -5,7 +5,8 @@ from pyalgotrade.technical import ma
 
 import dataIO, main, changePredictors, tradeIndicator
 
-prevPrice = 0
+#prevPrice = 0
+tradingPositions = 0;
 
 class MasterTrader(strategy.BacktestingStrategy):
 	def __init__(self, feed, instrument):
@@ -33,33 +34,47 @@ class MasterTrader(strategy.BacktestingStrategy):
 		# If the exit was canceled, re-submit it.
 		self.__position.exitMarket()
 
+	def Buy(self, stock, change, price):
+		# Check if we have to exit the position.
+		#if change < 0 and not self.__position.exitActive():
+		#if not self.__position.exitActive():
+		#	self.Sell(stock, change)
+		
+		amount = int(self.getBroker().getCash()/price)-1
+		if(change > 0):
+			self.__position = self.enterLong(stock, amount, True)
+		else:
+			self.__position = self.enterShort(stock, amount, True)
+
+	def Sell(self, stock, change):
+		self.__position.exitMarket()
+
+
 	def onBars(self, bars):
 		temp = bars.getBar(self.__instrument)
 		data = [temp.getAdjClose(), temp.getClose(), temp.getHigh(), temp.getVolume()]
 		
 		self.datamanager.append(bars.getDateTime(), self.getBroker().getEquity())
-		
 
+		price = temp.getAdjClose()
 		change = self.indicator.indicate(data)
 		if change is None:
-			print "Not ready"
 			return
 
 		bar = bars[self.__instrument]
 		# If a position was not opened, check if we should enter a long position.
 		if self.__position is None:
-			if change > 0:
+			#if change > 0:
 				# Enter a buy market order for 10 shares. The order is good till canceled.
-				self.__position = self.enterLong(self.__instrument, 10, True)
-		# Check if we have to exit the position.
-		elif change < 0 and not self.__position.exitActive():
-			self.__position.exitMarket()
+			self.Buy(self.__instrument, change, price)
 
+		elif not self.__position.exitActive():
+			self.Sell(self.__instrument, change)
 
 
 def run_strategy():
 	# Load the yahoo feed from the CSV file
-	securities = ["aapl"]
+	securities = ["app"]
 	feed = yahoofinance.build_feed(securities, 2006, 2012, "stockdata")
 
 	# Evaluate the strategy with the feed.
