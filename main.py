@@ -1,4 +1,4 @@
-import sys, os, pyalgotest, masterTrader
+import sys, os, pyalgotest, masterTrader, test
 from pyalgotrade.tools import yahoofinance
 
 def initialize():
@@ -22,7 +22,7 @@ if __name__ == '__main__':
 		initialize()
 
 	if "test" in sys.argv:
-		pyalgotest.run_strategy()
+		test.run_strategy()
 
 	if "run" in sys.argv:
 		masterTrader.run_strategy()

@@ -42,7 +42,7 @@ class MasterTrader(strategy.BacktestingStrategy):
 		#if not self.__position.exitActive():
 		#	self.Sell(stock, change)
 		
-		amount = int(self.getBroker().getCash()/price)
+		amount = int(self.getBroker().getCash()/price)-1
 		if(change > 0):
 			self.__position = self.enterLong(stock, amount, True)
 		else:
@@ -79,8 +79,8 @@ class MasterTrader(strategy.BacktestingStrategy):
 
 def run_strategy():
 	# Load the yahoo feed from the CSV file
-	securities = ["phot"]
-	feed = yahoofinance.build_feed(securities, 2012, 2014, "stockdata")
+	securities = ["app"]
+	feed = yahoofinance.build_feed(securities, 2006, 2014, "stockdata")
 
 	# Evaluate the strategy with the feed.
 	masterTrader = MasterTrader(feed, securities[0])
