@@ -1,0 +1,159 @@
+package io;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import engineer.Engineer;
+import task.Task;
+
+public class XML {
+	
+	private static void recursiveWriteXML(Task t, Document doc, Element parent){
+		Element task = doc.createElement("Task");
+		task.setAttribute("isSequential", Boolean.toString(t.getIsSequential()));
+		//task.setAttribute("id", Integer.toString(t.getId()));
+		parent.appendChild(task);
+		
+		Element label = doc.createElement("Label");
+		label.appendChild(doc.createTextNode(t.getLabel()));
+		task.appendChild(label);
+		
+		Element description = doc.createElement("Description");
+		description.appendChild(doc.createTextNode(t.getDescription()));
+		task.appendChild(description);
+		
+		Element engineers = doc.createElement("AssignedEngineers");
+		engineers.appendChild(doc.createTextNode(t.getAssignedEngineers().toString()));
+		task.appendChild(engineers);
+		
+		Element estimates = doc.createElement("Estimates");
+		estimates.setAttribute("originalEstimatedHours", Float.toString(t.getOriginalEstimatedHours()));
+		estimates.setAttribute("revisedEstimatedHours", Float.toString(t.getRevisedEstimatedHours()));
+		estimates.setAttribute("percentComplete", Float.toString(t.getPercentComplete()));
+		estimates.setAttribute("estimatedRemainingHours", Float.toString(t.getEstimatedRemainingHours()));
+		estimates.setAttribute("estimatedRemainingWorkdays", Float.toString(t.getEstimatedRemainingWorkdays()));
+		task.appendChild(estimates);
+		
+		Element subtasks = doc.createElement("Subtasks");
+		task.appendChild(subtasks);
+		for(Task sub : t.getSubtasks())
+			recursiveWriteXML(sub, doc, subtasks);
+	}	
+	
+	public static void exportTasks(Task t, File outputFile){
+		try {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.newDocument();
+			Element list = doc.createElement("WBA");
+			doc.appendChild(list);
+			
+			recursiveWriteXML(t, doc, list);
+
+			// write the content into xml file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(outputFile);
+
+			transformer.transform(source, result);
+
+		  } catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		  } catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		  }
+	}
+	
+	private static Task XMLtoTask(Task t, Element element){
+		boolean isSequential = Boolean.parseBoolean(element.getAttribute("isSequential"));
+		if(isSequential)
+			t = Task.Builder.buildSequentialTask();
+		else
+			t = Task.Builder.buildParallelTask();
+		
+		String label = element.getElementsByTagName("Label").item(0).getTextContent();
+		t.setLabel(label);
+		String description = element.getElementsByTagName("Description").item(0).getTextContent();
+		t.setDescription(description);
+		String engineers = element.getElementsByTagName("AssignedEngineers").item(0).getTextContent();
+		//masterTask
+			
+		Node estimates = element.getElementsByTagName("Estimates").item(0);
+		float revisedEstimatedHours = Float.parseFloat(estimates.getAttributes().getNamedItem("revisedEstimatedHours").getTextContent());
+		t.setRevisedEstimatedHours(revisedEstimatedHours);
+		float originalEstimatedHours = Float.parseFloat(estimates.getAttributes().getNamedItem("originalEstimatedHours").getTextContent());
+		t.setOriginalEstimatedHours(originalEstimatedHours);
+		float percentComplete = Float.parseFloat(estimates.getAttributes().getNamedItem("percentComplete").getTextContent());
+		t.setPercentComplete(percentComplete);
+		float estimatedRemainingWorkdays = Float.parseFloat(estimates.getAttributes().getNamedItem("estimatedRemainingWorkdays").getTextContent());
+		t.setEstimatedRemainingWorkdays(estimatedRemainingWorkdays);
+		float estimatedRemainingHours = Float.parseFloat(estimates.getAttributes().getNamedItem("estimatedRemainingHours").getTextContent());
+		t.setEstimatedRemainingHours(estimatedRemainingHours);
+		return t;
+	}
+	
+	private static Task recursiveReadXML(Task parent, Element element){
+		Task newTask = null;
+		if(parent == null)
+			parent = XMLtoTask(parent, element);
+		else{
+			newTask = XMLtoTask(newTask, element);
+			parent.addSubtask(newTask);
+		}
+		
+		NodeList list = element.getChildNodes();
+		int size1 = list.getLength();
+		for(int i = 0; i < size1; i++){
+			if(list.item(i).toString().contains("Subtasks"))
+				if(newTask != null)
+					recursiveReadXML(newTask, (Element) list.item(i));
+				else
+					recursiveReadXML(parent, (Element) list.item(i));
+		}
+		
+	}
+	
+	public static Task importTasks(File file){
+		Task masterTask = null;
+		try {
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(file);
+						
+			//optional, but recommended
+			//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+			doc.getDocumentElement().normalize();
+				
+			System.out.println("# of Tasks: " + doc.getElementsByTagName("Task").getLength());
+			NodeList nList = doc.getElementsByTagName("Task");
+
+			Node nNode = nList.item(0);
+				
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+				Element eElement = (Element) nNode;
+
+				recursiveReadXML(masterTask, eElement);
+
+				}
+		    } catch (Exception e) {
+			e.printStackTrace();
+		    }
+		return masterTask;
+	}
+}

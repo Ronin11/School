@@ -5,33 +5,49 @@ import java.util.ArrayList;
 import engineer.Engineer;
 
 public class Task {
+	public static class Builder {
+		
+		public static Task buildSequentialTask(){
+			return new Task(true);
+		}
+		
+		public static Task buildParallelTask(){
+			return new Task(false);
+		}
+		
+		public static Task buildLeafTask(){
+			return new Task(null);
+		}
+	}
+	
+	//If subtasks is empty, the task is a leaf
 	private ArrayList<Task> subtasks = new ArrayList<Task>();
-	private Task prevTask;
+	private boolean isSequential;
 	private ArrayList<Engineer> assignedEngineers = new ArrayList<Engineer>();
-	private String label;
-	private String description;
-	private float originalEstimatedHours, revisedEstimatedHours, percentComplete, 
-	estimatedRemainingHours, estimatedRemainingWorkdays;
+	private String label = "";
+	private String description = "";
+	private float originalEstimatedHours = 0, revisedEstimatedHours = 0, percentComplete = 0, 
+	estimatedRemainingHours = 0, estimatedRemainingWorkdays = 0;
 	private int id;
 	
 	//This should insure that each id is unique.
-	private static int newId = 0;
+	private static int newId = 0;	
 	
-	
-	public Task(){
+	private Task(Boolean b){
 		id = newId++;
+		if(b != null)
+			isSequential = b;
 	}
 	
 	public boolean isLeaf(){return subtasks.isEmpty();}
 	public ArrayList<Task> getSubtasks(){return subtasks;}
 	public void addSubtask(Task t){subtasks.add(t);}
 	
-	public Task getPrevTask(){return prevTask;}
-	public void setPrevTask(Task t){prevTask = t;}
+	public boolean getIsSequential(){return isSequential;}
 
 	public ArrayList<Engineer> getAssignedEngineers(){return assignedEngineers;}
 	public boolean addEngineerToTask(Engineer e){return assignedEngineers.add(e);}
-	public boolean removeEngineerToTask(Engineer e){return assignedEngineers.remove(e);}
+	public boolean removeEngineerFromoTask(Engineer e){return assignedEngineers.remove(e);}
 	public boolean addTeamToTask(ArrayList<Engineer> team){return assignedEngineers.addAll(team);}
 	
 	public String getLabel(){return label;}
@@ -44,10 +60,19 @@ public class Task {
 		if(this.isLeaf())
 			return originalEstimatedHours;
 		else{
-			float sum = 0;
-			for(Task t : subtasks)
-				sum += t.getOriginalEstimatedHours();
-			return sum;
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getOriginalEstimatedHours();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getOriginalEstimatedHours() > max)
+					max = t.getOriginalEstimatedHours();
+				return max;
+			}
 		}
 	}
 	public void setOriginalEstimatedHours(float f){originalEstimatedHours = f;}
@@ -56,16 +81,32 @@ public class Task {
 		if(this.isLeaf())
 			return revisedEstimatedHours;
 		else{
-			float sum = 0;
-			for(Task t : subtasks)
-				sum += t.getRevisedEstimatedHours();
-			return sum;
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getRevisedEstimatedHours();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getRevisedEstimatedHours() > max)
+					max = t.getRevisedEstimatedHours();
+				return max;
+			}
 		}
 	}
 	public void setRevisedEstimatedHours(float f){revisedEstimatedHours = f;}
 	
 	public float getPercentComplete(){
-		return percentComplete;
+		if(this.isLeaf())
+			return percentComplete;
+		else{
+			float sum = 0;
+			for(Task t : subtasks)
+				sum += t.getPercentComplete();
+			return sum/subtasks.size();
+		}
 	}
 	public void setPercentComplete(float f){percentComplete = f;}
 	
@@ -73,10 +114,19 @@ public class Task {
 		if(this.isLeaf())
 			return estimatedRemainingHours;
 		else{
-			float sum = 0;
-			for(Task t : subtasks)
-				sum += t.getEstimatedRemainingHours();
-			return sum;
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getEstimatedRemainingHours();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getEstimatedRemainingHours() > max)
+					max = t.getEstimatedRemainingHours();
+				return max;
+			}
 		}
 	}
 	public void setEstimatedRemainingHours(float f){estimatedRemainingHours = f;}
@@ -85,13 +135,22 @@ public class Task {
 		if(this.isLeaf())
 			return estimatedRemainingWorkdays;
 		else{
-			float sum = 0;
-			for(Task t : subtasks)
-				sum += t.getEstimatedRemainingHours();
-			return sum;
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getEstimatedRemainingWorkdays();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getEstimatedRemainingWorkdays() > max)
+					max = t.getEstimatedRemainingWorkdays();
+				return max;
+			}
 		}
 	}
-	public void setEstimatedREmainingWorkdays(float f){estimatedRemainingWorkdays = f;}
+	public void setEstimatedRemainingWorkdays(float f){estimatedRemainingWorkdays = f;}
 	
 	public int getId(){return id;}
 }

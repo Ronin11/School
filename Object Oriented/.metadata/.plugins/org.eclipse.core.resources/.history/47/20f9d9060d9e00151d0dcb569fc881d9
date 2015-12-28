@@ -1,0 +1,156 @@
+package task;
+
+import java.util.ArrayList;
+
+import engineer.Engineer;
+
+public class Task {
+	public static class Builder {
+		
+		public static Task buildSequentialTask(){
+			return new Task(true);
+		}
+		
+		public static Task buildParallelTask(){
+			return new Task(false);
+		}
+		
+		public static Task buildLeafTask(){
+			return new Task(null);
+		}
+	}
+	
+	//If subtasks is empty, the task is a leaf
+	private ArrayList<Task> subtasks = new ArrayList<Task>();
+	private boolean isSequential;
+	private ArrayList<Engineer> assignedEngineers = new ArrayList<Engineer>();
+	private String label = "";
+	private String description = "";
+	private float originalEstimatedHours = 0, revisedEstimatedHours = 1, percentComplete = 2, 
+	estimatedRemainingHours = 3, estimatedRemainingWorkdays = 4;
+	private int id;
+	
+	//This should insure that each id is unique.
+	private static int newId = 0;	
+	
+	private Task(Boolean b){
+		id = newId++;
+		if(b != null)
+			isSequential = b;
+	}
+	
+	public boolean isLeaf(){return subtasks.isEmpty();}
+	public ArrayList<Task> getSubtasks(){return subtasks;}
+	public void addSubtask(Task t){subtasks.add(t);}
+	
+	public boolean getIsSequential(){return isSequential;}
+
+	public ArrayList<Engineer> getAssignedEngineers(){return assignedEngineers;}
+	public boolean addEngineerToTask(Engineer e){return assignedEngineers.add(e);}
+	public boolean removeEngineerToTask(Engineer e){return assignedEngineers.remove(e);}
+	public boolean addTeamToTask(ArrayList<Engineer> team){return assignedEngineers.addAll(team);}
+	
+	public String getLabel(){return label;}
+	public void setLabel(String s){label = s;}
+	
+	public String getDescription(){return description;}
+	public void setDescription(String s){description = s;}
+	
+	public float getOriginalEstimatedHours(){
+		if(this.isLeaf())
+			return originalEstimatedHours;
+		else{
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getOriginalEstimatedHours();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getOriginalEstimatedHours() > max)
+					max = t.getOriginalEstimatedHours();
+				return max;
+			}
+		}
+	}
+	public void setOriginalEstimatedHours(float f){originalEstimatedHours = f;}
+	
+	public float getRevisedEstimatedHours(){
+		if(this.isLeaf())
+			return revisedEstimatedHours;
+		else{
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getRevisedEstimatedHours();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getRevisedEstimatedHours() > max)
+					max = t.getRevisedEstimatedHours();
+				return max;
+			}
+		}
+	}
+	public void setRevisedEstimatedHours(float f){revisedEstimatedHours = f;}
+	
+	public float getPercentComplete(){
+		if(this.isLeaf())
+			return percentComplete;
+		else{
+			float sum = 0;
+			for(Task t : subtasks)
+				sum += t.getPercentComplete();
+			return sum/subtasks.size();
+		}
+	}
+	public void setPercentComplete(float f){percentComplete = f;}
+	
+	public float getEstimatedRemainingHours(){
+		if(this.isLeaf())
+			return estimatedRemainingHours;
+		else{
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getEstimatedRemainingHours();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getEstimatedRemainingHours() > max)
+					max = t.getEstimatedRemainingHours();
+				return max;
+			}
+		}
+	}
+	public void setEstimatedRemainingHours(float f){estimatedRemainingHours = f;}
+	
+	public float getEstimatedRemainingWorkdays(){
+		if(this.isLeaf())
+			return estimatedRemainingWorkdays;
+		else{
+			if(isSequential){
+				float sum = 0;
+				for(Task t : subtasks)
+					sum += t.getEstimatedRemainingWorkdays();
+				return sum;
+			}
+			else{
+				float max = 0;
+				for(Task t : subtasks)
+					if(t.getEstimatedRemainingWorkdays() > max)
+					max = t.getEstimatedRemainingWorkdays();
+				return max;
+			}
+		}
+	}
+	public void setEstimatedREmainingWorkdays(float f){estimatedRemainingWorkdays = f;}
+	
+	public int getId(){return id;}
+}

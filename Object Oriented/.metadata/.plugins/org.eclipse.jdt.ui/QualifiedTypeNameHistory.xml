@@ -47,4 +47,5 @@
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="sudoku.Iterator"/>
 <fullyQualifiedTypeName name="sudoku.Cell"/>
+<fullyQualifiedTypeName name="task.Task"/>
 </qualifiedTypeNameHistroy>

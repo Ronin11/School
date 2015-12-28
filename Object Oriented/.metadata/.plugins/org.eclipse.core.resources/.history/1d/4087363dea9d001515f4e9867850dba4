@@ -1,0 +1,11 @@
+package task;
+
+public class TaskBuilder {
+	public static Task buildSequentialTask(){
+		return new Task(true);
+	}
+	
+	public static Task buildParallelTask(){
+		return new Task(false);
+	}
+}
