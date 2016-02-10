@@ -1,0 +1,35 @@
+//This algorith will determine if all of the outcomes are a win for the player. Since we didnt really talk about the
+ other players turn, I am unsure of exactly how to add that into the algorithm.
+
+	Boolean Win(int n){//If theres only one pile, you can take them all to win.
+		return true;
+	}
+
+	Boolean Win(int n, int m){//Try all of the possiblities in the two pile problem
+		if(a pile is empty)
+			return	Win(Other pile);
+		else
+			AND ALL(
+				for(int i = 0; i < n; i++)
+					if(Win(i,m))
+				for(int i = 0; i < 0; i++)
+					if(Win(n,m))		
+			);	
+		
+	}
+
+	Boolean Win(int n, int m, int o){//Try all of the possiblities in the three pile problem
+		if(a pile is empty)
+			return	Win(Other two piles);
+
+		else
+			AND ALL(
+				for(int i = 0; i < n; i++)
+					if(Win(i,m,o))
+				for(int i = 0; i < m; i++)
+					if(Win(n,i,o))
+				for(int i = 0; i < k; i++)
+					if(Win(n,m,i))		
+			);
+
+	}

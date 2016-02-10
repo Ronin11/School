@@ -1,0 +1,15 @@
+package algos;
+
+import java.util.ArrayList;
+
+public class DynamicProgramming extends Algo{
+	DynamicProgramming(){
+		
+	}
+
+	@Override
+	public boolean win(ArrayList<Integer> state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

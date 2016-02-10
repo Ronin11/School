@@ -1,0 +1,21 @@
+package main;
+
+import java.io.File;
+
+import io.XML;
+import task.Task;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Engineer e = new Engineer;
+		Task t = Task.Builder.buildParallelTask();
+		t.setDescription("description");
+		t.setLabel("label");
+		t.addSubtask(Task.Builder.buildLeafTask());
+		t.getSubtasks().get(0).addSubtask(Task.Builder.buildLeafTask());
+		XML.exportTasks(t, new File("test.xml"));
+		XML.importTasks(new File("test.xml"));
+	}
+
+}

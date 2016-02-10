@@ -1,0 +1,37 @@
+package main;
+
+public class Main {
+	
+	Boolean Win(int n){
+		return True;
+	}
+
+	Boolean Win(int n, int m){
+
+	}
+
+	Bool Win(int n, int m, int o){
+		if(two piles are empty)
+			return Win(Last pile);
+		
+		else if(pile is empty)
+			return	Win(Other two piles);
+
+		else
+			not(
+				for(int i = 0; i < n; i++)
+					if(Win(i,m,o))
+				for(int i = 0; i < m; i++)
+					if(Win(n,i,o))
+				for(int i = 0; i < 0; i++)
+					if(Win(n,m,i))		
+			);
+
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

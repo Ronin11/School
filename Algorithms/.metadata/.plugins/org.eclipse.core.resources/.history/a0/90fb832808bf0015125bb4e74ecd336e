@@ -1,0 +1,19 @@
+package algos;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class RecursiveMemoized extends Algo{
+	Map<Integer, Integer> cache = new ConcurrentHashMap<>();
+	RecursiveMemoized(){
+		//cache.computeIfAbsent(arg0, arg1)
+	}
+
+	@Override
+	public boolean win(ArrayList<Integer> state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

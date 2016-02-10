@@ -1,0 +1,15 @@
+package main;
+
+import io.XML;
+import task.Task;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Task t = Task.Builder.buildParallelTask();
+		t.addSubtask(Task.Builder.buildLeafTask());
+		XML.exportTasks(t, new File("test.xml");
+
+	}
+
+}

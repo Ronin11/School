@@ -1,0 +1,13 @@
+package algos;
+
+import java.util.ArrayList;
+
+public class Recursive extends Algo {
+	
+	@Override
+	public boolean win(ArrayList<Integer> state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

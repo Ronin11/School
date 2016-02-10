@@ -1,0 +1,44 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.Random;
+
+import org.junit.Test;
+
+import algos.*;
+
+public class Tester {
+	@Test
+	public void firstTest(){
+		for(int i = 0; i < 100; i++){
+			Random rand = new Random();
+			int a = rand.nextInt(5);
+			int b = rand.nextInt(5);
+			int c = rand.nextInt(5);
+			Algo algo1 = new Recursive();
+			Algo algo2 = new RecursiveMemoized(a, b, c);
+			Algo algo3 = new DynamicProgramming(a, b, c);
+			if(!(algo1.win(a, b, c) == algo2.win(a, b, c) == algo3.win(a, b, c))){
+				System.out.println
+				System.out.println(algo1.win(a, b, c));
+				System.out.println(algo2.win(a, b, c));
+				System.out.println(algo3.win(a, b, c));
+			}
+			assertTrue(algo1.win(a, b, c) == algo2.win(a, b, c)== algo3.win(a, b, c));
+		}
+	}
+	
+	@Test
+	public void secondTest(){
+		for(int i = 0; i < 100; i++){
+			Random rand = new Random();
+			int a = rand.nextInt(100);
+			int b = rand.nextInt(100);
+			int c = rand.nextInt(100);
+			Algo algo2 = new RecursiveMemoized(a, b, c);
+			Algo algo3 = new DynamicProgramming(a, b, c);
+			assertTrue(algo2.win(a, b, c) == algo3.win(a, b, c));
+		}
+	}
+}

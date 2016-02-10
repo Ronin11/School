@@ -1,0 +1,14 @@
+package algos;
+
+public class DynamicProgramming extends Algo{
+	
+	public DynamicProgramming(){
+		
+	}
+
+	@Override
+	public boolean win(int a, int b, int c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}
