@@ -1,0 +1,28 @@
+package algos;
+
+public class DynamicProgramming extends Algo{
+	boolean[][][] map;
+	
+	private void clearMap(int a, int b, int c){
+		for(int i = 0; i <= a; i++)
+			for(int j = 0; j <= b; j++)
+				for(int k = 0; k <=c; k++)
+					map[i][j][k] = null;
+	}
+
+	public DynamicProgramming(int a, int b, int c){
+		map = new Boolean[a+1][b+1][c+1];
+		clearMap(a, b, c);
+		map[0][0][0] = false;
+		map[1][0][0] = true;
+		map[0][1][0] = true;
+		map[0][0][1] = true;
+		
+	}
+
+	@Override
+	public boolean win(int a, int b, int c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

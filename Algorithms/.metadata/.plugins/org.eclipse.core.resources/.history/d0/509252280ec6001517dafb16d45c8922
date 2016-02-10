@@ -1,0 +1,82 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import org.junit.Test;
+
+import algos.*;
+
+public class Tester {
+	long startTime = 0;
+	long endTime = 0;
+	
+	@Test
+	public void firstTest(){
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("firstTest.csv");
+			for(int i = 2; i < 10; i+=2){
+				Algo algo1 = new Recursive();
+				Algo algo2 = new RecursiveMemoized(i,i,i);
+				Algo algo3 = new DynamicProgramming(i,i,i);
+				
+
+				startTime = System.nanoTime();
+				boolean one = algo1.win(i,i,i);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf(endTime - startTime) + ',');
+				
+				startTime = System.nanoTime();
+				boolean two = algo2.win(i,i,i);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf(endTime - startTime) + ',');
+				
+				startTime = System.nanoTime();
+				boolean three = algo3.win(i,i,i);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf(endTime - startTime) + '\n');
+				
+				assertTrue(one == two);
+				assertTrue(one == three);
+			}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				writer.close();
+			}
+	}
+	
+	@Test
+	public void secondTest(){
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("secondTest.csv");
+			for(int i = 2; i < 256; i*=2){
+				Algo algo2 = new RecursiveMemoized(i,i,i);
+				Algo algo3 = new DynamicProgramming(i,i,i);
+
+				startTime = System.nanoTime();
+				boolean two = algo2.win(i,i,i);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf(endTime - startTime) + ',');
+				
+				startTime = System.nanoTime();
+				boolean three = algo3.win(i,i,i);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf(endTime - startTime) + '\n');
+				
+				assertTrue(two == three);
+			}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				writer.close();
+			}
+	}
+}

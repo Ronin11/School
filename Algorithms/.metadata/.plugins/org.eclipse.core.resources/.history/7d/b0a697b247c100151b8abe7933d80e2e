@@ -1,0 +1,49 @@
+package algos;
+
+public class DynamicProgramming extends Algo{
+	Boolean[][][] map;
+	
+	private void clearMap(int a, int b, int c){
+		for(int i = 0; i <= a; i++)
+			for(int j = 0; j <= b; j++)
+				for(int k = 0; k <=c; k++)
+					map[i][j][k] = null;
+	}
+
+	public DynamicProgramming(int a, int b, int c){
+		map = new Boolean[a+1][b+1][c+1];
+		clearMap(a, b, c);
+		map[0][0][0] = false;
+		for(int i = 1; i <= a; i++)
+			map[i][0][0] = true;
+		for(int i = 1; i <= b; i++)
+			map[0][i][0] = true;
+		for(int i = 1; i <= c; i++)
+			map[0][0][i] = true;
+	}
+
+	@Override
+	public boolean win(int a, int b, int c) {
+		if(map[a][b][c] != null)
+			return map[a][b][c];
+		
+		for(int i = 1; i < a; i++){
+			
+		}
+		
+		for(int i = 1; i < b; i++){
+			
+		}
+
+		for(int i = 1; i < c; i++){
+			
+		}
+		
+		
+		//Three seperate loops
+		//and three nested loops
+		
+		
+		return false;
+	}
+}

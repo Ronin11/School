@@ -1,0 +1,5 @@
+package algos;
+
+public abstract class Algo {
+	public abstract boolean win(ArrayList<ArrayList<Boolean>> game);
+}

@@ -1,0 +1,99 @@
+package main;
+
+import static org.junit.Assert.assertTrue;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import org.junit.Test;
+
+import algos.Algo;
+import algos.DynamicProgramming;
+import algos.Recursive;
+import algos.RecursiveMemoized;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		firstTest();
+		secondTest();
+
+	}
+	
+	long startTime = 0;
+	long endTime = 0;
+	
+	public static void firstTest(){
+		PrintWriter writer = null;
+		for(int i = 0; i < 100; i++){
+			Random rand = new Random();
+			int a = rand.nextInt(5);
+			int b = rand.nextInt(5);
+			int c = rand.nextInt(5);
+			Algo algo1 = new Recursive();
+			Algo algo2 = new RecursiveMemoized(a, b, c);
+			Algo algo3 = new DynamicProgramming(a, b, c);
+			
+			try {
+				writer = new PrintWriter("firstTest.dat");
+				startTime = System.nanoTime();
+				boolean one = algo1.win(a, b, c);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf((endTime - startTime)/1000000) + '\t');
+				
+				startTime = System.nanoTime();
+				boolean two = algo2.win(a, b, c);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf((endTime - startTime)/1000000) + '\t');
+				
+				startTime = System.nanoTime();
+				boolean three = algo3.win(a, b, c);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf((endTime - startTime)/1000000) + '\n');
+				
+				assertTrue(one == two);
+				assertTrue(one == three);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				writer.close();
+			}
+		}
+	}
+	
+	@Test
+	public void secondTest(){
+		PrintWriter writer = null;
+		for(int i = 0; i < 100; i++){
+			Random rand = new Random();
+			int a = rand.nextInt(100);
+			int b = rand.nextInt(100);
+			int c = rand.nextInt(100);
+			Algo algo2 = new RecursiveMemoized(a, b, c);
+			Algo algo3 = new DynamicProgramming(a, b, c);
+			
+			try {
+				writer = new PrintWriter("secondTest.dat");
+				
+				startTime = System.nanoTime();
+				boolean two = algo2.win(a, b, c);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf((endTime - startTime)/1000000) + '\t');
+				
+				startTime = System.nanoTime();
+				boolean three = algo3.win(a, b, c);
+				endTime = System.nanoTime();
+				writer.write(String.valueOf((endTime - startTime)/1000000) + '\n');
+				
+				assertTrue(two == three);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				writer.close();
+			}
+		}
+
+}

@@ -1,0 +1,17 @@
+package algos;
+
+import java.util.ArrayList;
+
+public class RecursiveMemoized extends Algo{
+	
+	RecursiveMemoized(){
+		
+	}
+
+	@Override
+	public boolean win(ArrayList<Integer> state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

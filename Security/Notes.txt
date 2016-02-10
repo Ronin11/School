@@ -1,0 +1,29 @@
+Computer Security - Protection of Assets
+	Hardware
+	Software
+	Data
+
+Security Triad - ON EXAM
+	Confidentiality - assets only views by authorized.
+	Integrity - No unathorized modification of assets.
+	Availability - Authorized parties can view/modify assets at all authorized times.
+
+Types of attacks:
+	Interruption - Availability, DDoS
+	Interception - Confidentiality, Sniffing/Snooping
+	Modification - Integrity, Authentication, NonRepudiation, Man-In-the-Middle
+	Fabrications - Integrity, Authentication, NonRepudiation, Replay, Spoofing
+
+MOM: 
+	Method
+	Opportunity
+	Motive
+
+Control
+	Prevent - block attack/close vulnerability
+	Deter - made attack harder
+	Deflect - make another target more appealing/attractive
+	Mitigate - make impact/harm less severe 
+	Detect - identify if attack happened/happening
+	Recover - return to a known/secure state
+

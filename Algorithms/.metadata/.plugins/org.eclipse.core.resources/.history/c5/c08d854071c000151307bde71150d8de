@@ -1,0 +1,28 @@
+package algos;
+
+import java.util.ArrayList;
+
+public class Recursive extends Algo {
+
+	public Recursive(){
+		
+	}
+	
+	@Override
+	public boolean win(ArrayList<Integer> state) {
+		if (A == 0) and (B == 0) and (C == 0) 
+			return false;
+
+		for i from 1 to A
+			if not Win(A-i, B, C) return True
+		
+		for i from 1 to B
+			if not Win(A,B-i,C) return True
+
+		for i from 1 to C
+			if not Win(A,B,C-i) return True
+
+		return false;
+	}
+
+}

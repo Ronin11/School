@@ -1,0 +1,14 @@
+package algos;
+
+public class DynamicProgramming extends Algo{
+	int[][][] map;
+	public DynamicProgramming(int a, int b, int c){
+		map = new int[a+1][b+1][c+1];
+	}
+
+	@Override
+	public boolean win(int a, int b, int c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

@@ -1,0 +1,36 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+import algos.*;
+
+public class Tester {
+	@Test
+	public void firstTest(){
+		for(int i = 0; i < 10000; i++){
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			for(int j = 0; j < Math.random() % 5; j++)
+				list.add(new Integer((int)Math.random() % 100));
+			Algo algo1 = new Recursive();
+			Algo algo2 = new RecursiveMemoized();
+			Algo algo3 = new DynamicProgramming();
+			assertTrue(algo1.win(list) == algo2.win(list) == algo3.win(list));
+		}
+	}
+	
+	@Test
+	public void secondTest(){
+		for(int i = 0; i < 100; i++){
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			for(int j = 0; j < Math.random() % 15; j++)
+				list.add(new Integer((int)Math.random() % 100));
+			Algo algo2 = new RecursiveMemoized();
+			Algo algo3 = new DynamicProgramming();
+			assertTrue(algo2.win(list) == algo3.win(list));
+		}
+	}
+}
