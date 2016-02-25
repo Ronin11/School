@@ -27,3 +27,46 @@ Control
 	Detect - identify if attack happened/happening
 	Recover - return to a known/secure state
 
+
+Exam Answers:
+
+	Stream			Block
+
+pro	Speed			high diffusion
+	low error prop		not susceptible to insertion/modification
+				computationally cheap
+
+con	low diffusion		slow
+	susceptible to 		error prop
+	 insertion attack	padding
+	computationally
+	 expensive
+
+Diffusion: Spreading out the characters in the ciphertext, so things don't line up anymore
+Error Propogation: mistakes in one place moving into other areas
+
+Key management: Number of keys and ~something~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1976 Diffie Hellman - The first public key cryptosystem, based on the discrete log problem. Key agreement protocol.
+	n = g^k mod p
+	Not used because there is no authentication.
+
+1978 RSA - Rivest Shamir Adelman, based on factoring large numbers
+
+
+Buffer overflow
+Incomplete mediation
+Time to check to time of use
+Undocumented access point - backdoor
+Off by one error
+int overflow
+Unterminated null string
+Unsafe libraries
+Race conditions
+
+
+
+

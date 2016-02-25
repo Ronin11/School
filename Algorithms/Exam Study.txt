@@ -1,0 +1,2 @@
+Know the Meta Algorithm -> Recursive -> DP Reformulation -> Traceback
+Apply this to problems
