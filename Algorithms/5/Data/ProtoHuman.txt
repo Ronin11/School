@@ -50,7 +50,7 @@ ORIGIN
      2881 ctactatact caattgatcc aataacttga ccaacggaac aagttaccct agggataaca
      2941 gcgcaatcct attctagagt ccatatcaac aatagggttt acgacctcga tgttggatca
      3001 ggacatcccg atggtgcagc cgctattaaa ggttcgtttg ttcaacgatt aaagtcctac
-     3061 gtgatctgag ttcagaccgg agtaatccag gtcggtttct atctacnttc aaattcctcc
+     3061 gtgatctgag ttcagaccgg agtaatccag gtcggtttct atctaccttc aaattcctcc
      3121 ctgtacgaaa ggacaagaga aataaggcct acttcacaaa gcgccttccc ccgtaaatga
      3181 tatcatctca acttagtatt atacccacac ccacccaaga acagggtttg ttaagatggc
      3241 agagcccggt aatcgcataa aacttaaaac tttacagtca gaggttcaat tcctcttctt
