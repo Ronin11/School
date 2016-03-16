@@ -1,0 +1,50 @@
+Chap 1.
+8 Great Ideas in Computer Architecture
+cpuTime = instruction count * CPI * clockcycle time
+clockCycleTime = 1/clockRate
+
+What is the powerwall?
+Binary
+2's Compliment
+Different ways of addressing
+
+MIPS Fields --> ON CARD
+lw $s0, 8000($s1)
+
+
+~~~~!!!! MIPS !!!!~~~~~~~~ EX:
+
+C code, write in MIPS
+
+for(i=0; i<k; i++)
+{
+	array[i] = array[i] +1
+}
+
+array 800 base address
+stored $t1
+initiate i = 0
+store k with 4
+save i ad in k in
+i = $s2
+k = $s1
+
+Solution:
+
+main:
+	lwi $s2, 0
+	lwi $s1, 4
+
+loop:
+	sll $t3, $s2, 2	#i = 4 increment
+	add $t4, $t3, $t1
+	lw  $t5, 0($t4)
+	beq $s2, $s1, jumploop
+	
+	addi $t5, $t5, 1
+	sw  $t5, 0($t4)
+	addi $s2, $s2, 1
+	j loop
+
+jumploop:
+	
