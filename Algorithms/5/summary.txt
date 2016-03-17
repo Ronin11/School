@@ -1,0 +1,54 @@
+Assignment 5 Summary
+
+Using the Hirschberg algorithm I was able to find the minimum edit distances for the DNA sequences.
+After scoring the pairs it was interesting to see how similar the sequences were. It really goes to show that our similarities as different races vastly outweigh our differences. Looking at the data we can see that there is only a 1.2% difference in the Human and Neandertal sequences. It is also very obvious that the Chimpanzee1 sequence is the closest match of all the great apes. Which scientifically means that these chimpanzees and humans are most likely to share the nearest common ancestor compared to the other great apes.
+The Hirschberg algorithm is efficient, however the large sequences made the computation incredibly slow. This caused numerous issues with development and execution.
+
+		The data:
+	Total Scores:
+
+Human: 82840
+Neandertal: 82825
+
+Aust: 82845
+Chinese: 82850
+English: 82845
+Guarani: 82850
+Japan: 82840
+MajuroAtoll: 82845
+Morocco: 82835
+NativeAmerican: 82820
+Somao: 82800
+Turkey: 82840
+
+Protohuman: 82845
+Baboon: 82605
+Bonobo: 82815
+Chimpanzee1: 82770
+Chimpanzee2: 82805
+Gorilla: 81820
+WesternLowlandGorilla: 82060
+
+	Comparisons Scores:
+
+			Human
+Neandertal:	81379
+
+			Aust
+Chinese: 	82554
+English: 	82596
+Guarani: 	82549
+Japan: 		82540
+MajuroAtoll:82547
+Morocco: 	82604
+NativeAmerican:82507
+Somao: 		82510
+Turkey: 	82612
+
+			ProtoHuman
+Baboon: 	56403		
+Bonobo: 	60735
+Chimpanzee1:78065
+Chimpanzee2:67638
+Gorilla: 	65963
+WesternLowlandGorilla: 65900

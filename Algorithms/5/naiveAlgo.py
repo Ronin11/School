@@ -30,10 +30,6 @@ class AlignmentFinder(object):
 									self.D[i-1, j] + self.indel,
 									self.D[i, j-1] + self.indel)
 	def _get_score(self, i, j):
-		''' The indexing is quite tricky because the matrix as one more row & column.
-		That causes a shift between the matrix index and the sequence indices.
-		Therefore, to obtain the correct nucleotide in the sequence, we must
-		substract 1 to the matrix index. '''
 		return self.scoring[self.seq1[i-1], self.seq2[j-1]]
 	
 	def _get_aligned_pair(self, i, j):
